@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "venturahr"
+version = "0.1.0"
+description = "Infnet 2022.2 - Projeto de Bloco"
+authors = ["Jonathan Abila <31670446+jonathanabila@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+tryceratops = "^1.1.0"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+black = "^22.3.0"
+mypy = "^0.950"
+pre-commit = "^2.19.0"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+pytest-watch = "^4.2.0"
+factory-boy = "^3.2.1"
+Faker = "^13.11.0"
+pytest-factoryboy = "^2.2.1"
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+line_length = 100
+extra_standard_library = ["pytest", "toml", "click"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
