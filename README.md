@@ -79,6 +79,81 @@ ter para cumprir os seus objetivos.
 ## Casos de uso
 
 ### UC-01
+O usuário acesso o site e não está logado. Dessa forma, seleciona a opção para realizar o login para acessar a rede social.
+
+### UC-02
+O usuário acessa o site, porém não possui um perfil, para tal ele seleciona a opção de criar um perfil para visualizar e possivelmente
+se candidatar as vagas.
+
+### UC-03
+O usuário acessa o site, porém não possui um acesso para publicar as vagas, nesse caso o profissional precisa entrar em contato com o
+administrador da conta para providenciar o acesso para ele.
+
+### UC-04.01
+Um profissional de RH deseja publicar um nova vaga, para tal, ele acessa o sistema com o seu login e realiza o processo de publicação da
+vaga. Após o processo, ele visualiza a vaga publicada.
+
+### UC-04.02
+Durante o processo de cadastro de uma vaga ele não adiciona o PMD para um critério, ao tentar salvar a vaga o sistema bloqueia e
+mostra um erro na tela explicando que todos os critérios precisam de um PMD.
+
+### UC-04.03
+Durante o processo de cadastro de uma vaga ele não adiciona o pesoa para um critério, ao tentar salvar a vaga o sistema bloqueia e
+mostra um erro na tela explicando que todos os critérios precisam de um peso.
+
+### UC-04.04
+Durante o processo de cadastro de uma vaga o usuário não adiciona nenhum critério, ao tentar salvar a vaga o sistema bloqueia e mostra
+um erro na tela explicando que o usuário deve adicionar um número minímo de critérios.
+
+### UC-04.05
+Durante o processo de cadastro de uma vaga o usuário não adiciona nenhuma descrição para o critério, com isso o sistema não permite
+que a vaga seja salva mostrando que é necessário incluir as descrições para todos os critérios.
+
+### UC-05.01
+O candidato deseja se inscrever em um vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário de
+acordo com o seu perfil, após finalizar o preenchimento ele salva e vê que sua candidatura foi concluida.
+
+### UC-05.02
+O candidato deseja se inscrever em um vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário,
+porém não concluir a selecão da sua experiência em todos os critérios, e ao tentar salvar sua aplicação visualiza um erro dizendo que é
+necessário que ele preencha todos os critérios.
+
+### UC-05.03
+O candidato abre a vaga para se inscrever, porém desiste de prosseguir com o processo de candidatura, com isso fecha o site. O sistema não pesiste
+o seu progresso, tendo que reiniciar o processo.
+
+### UC-05.03
+O candidato abre a vaga para se inscrever, porém desiste de prosseguir com o processo de candidatura, com isso fecha o site e seleciona a opção
+para salvar o seu progresso, com isso na próxima vez que abrir a vaga poderá prosseguir com o preenchimento da sua candidatura.
+
+### UC-06.01
+O candidato tenta acessar uma vaga por meio da sua url, porém o período para captação de profissionais já encerrou, com isso ele vê uma página
+explicando que o processo já foi finalizado.
+
+### UC-06.02
+O candidato acessa suas vagas que estão salvas sem finalizar e tentar prosseguir com o cadastro de suas experiências, porém o prazo já se encerrou
+e ele é direcionado para uma página explicando que o processo já foi finalizado.
+
+### UC-07.01
+Ao final do período que a vaga fica disponível para a captação de profissionais o sistema envia um email para o responsável pela vaga com um link com
+o resultado para a captação.
+
+### UC-07.02
+Ao final, o usuário responsável pela vaga acessa o seu painel para a vaga e seleciona o opção para extender o tempo que a vaga ficará disponível por
+mais um mês.
+
+### UC-07.03
+Ao final, o usuário responsável pela vaga acessa o seu painel para a vaga e seleciona o opção finalizar de fato o processo de captação de profissionais.
+
+### UC-07.03
+Ao final, o usuário responsável não extende ou fecha a vaga, com isso o sistema fecha a vaga após dois dias como comportamento padrão.
+
+### UC-08.01
+O usuário responsável pela vaga deseja acessar o sistema para visualizar mais informações sobre o perfil dos usuários que tiveram uma nota maior ou
+iqual ao perfil da vaga.
+
+### UC-08.02
+O usuário seleciona o perfil de um usuário com a nota maior que o perfil da vaga e consegue visualizar informações de contato com o profissional.
 
 # Atores
 
