@@ -35,6 +35,11 @@
   - [Introdução](#introdução)
   - [Objetivo](#diagrama-de-classes-objetivo)
   - [Diagrama](#diagrama)
+- [Processo de Desenvolvimento de Software](#processo-de-desenvolvimento-de-software)
+  - [Ciclo de vida](#ciclo-de-vida)
+  - [Processo Unificado](#processo-unificado)
+  - [Etapas](#etapas)
+  - [Desenvolvimento ágil](#desenvolvimento-ágila)
 
 # Introdução
 
@@ -94,7 +99,7 @@ O usuário acessa o site, porém não possui um acesso para publicar as vagas, n
 administrador da conta para providenciar o acesso para ele.
 
 ### UC-04.01
-Um profissional de RH deseja publicar um nova vaga, para tal, ele acessa o sistema com o seu login e realiza o processo de publicação da
+Um profissional de RH deseja publicar uma nova vaga, para tal, ele acessa o sistema com o seu login e realiza o processo de publicação da
 vaga. Após o processo, ele visualiza a vaga publicada.
 
 ### UC-04.02
@@ -102,32 +107,32 @@ Durante o processo de cadastro de uma vaga ele não adiciona o PMD para um crit�
 mostra um erro na tela explicando que todos os critérios precisam de um PMD.
 
 ### UC-04.03
-Durante o processo de cadastro de uma vaga ele não adiciona o pesoa para um critério, ao tentar salvar a vaga o sistema bloqueia e
+Durante o processo de cadastro de uma vaga ele não adiciona o peso para um critério, ao tentar salvar a vaga o sistema bloqueia e
 mostra um erro na tela explicando que todos os critérios precisam de um peso.
 
 ### UC-04.04
 Durante o processo de cadastro de uma vaga o usuário não adiciona nenhum critério, ao tentar salvar a vaga o sistema bloqueia e mostra
-um erro na tela explicando que o usuário deve adicionar um número minímo de critérios.
+um erro na tela explicando que o usuário deve adicionar um número mínimo de critérios.
 
 ### UC-04.05
 Durante o processo de cadastro de uma vaga o usuário não adiciona nenhuma descrição para o critério, com isso o sistema não permite
 que a vaga seja salva mostrando que é necessário incluir as descrições para todos os critérios.
 
 ### UC-05.01
-O candidato deseja se inscrever em um vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário de
-acordo com o seu perfil, após finalizar o preenchimento ele salva e vê que sua candidatura foi concluida.
+O candidato deseja se inscrever em uma vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário de
+acordo com o seu perfil, após finalizar o preenchimento ele salva e vê que sua candidatura foi concluída.
 
 ### UC-05.02
-O candidato deseja se inscrever em um vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário,
-porém não concluir a selecão da sua experiência em todos os critérios, e ao tentar salvar sua aplicação visualiza um erro dizendo que é
+O candidato deseja se inscrever em uma vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário,
+porém não concluir a seleção da sua experiência em todos os critérios, e ao tentar salvar sua aplicação visualiza um erro dizendo que é
 necessário que ele preencha todos os critérios.
 
 ### UC-05.03
-O candidato abre a vaga para se inscrever, porém desiste de prosseguir com o processo de candidatura, com isso fecha o site. O sistema não pesiste
+O candidato abre a vaga para se inscrever, porém, desiste de prosseguir com o processo de candidatura, com isso fecha o site. O sistema não pesiste
 o seu progresso, tendo que reiniciar o processo.
 
 ### UC-05.03
-O candidato abre a vaga para se inscrever, porém desiste de prosseguir com o processo de candidatura, com isso fecha o site e seleciona a opção
+O candidato abre a vaga para se inscrever, porém, desiste de prosseguir com o processo de candidatura, com isso fecha o site e seleciona a opção
 para salvar o seu progresso, com isso na próxima vez que abrir a vaga poderá prosseguir com o preenchimento da sua candidatura.
 
 ### UC-06.01
@@ -143,14 +148,14 @@ Ao final do período que a vaga fica disponível para a captação de profission
 o resultado para a captação.
 
 ### UC-07.02
-Ao final, o usuário responsável pela vaga acessa o seu painel para a vaga e seleciona o opção para extender o tempo que a vaga ficará disponível por
+Ao final, o usuário responsável pela vaga acessa o seu painel para a vaga e seleciona a opção para extender o tempo que a vaga ficará disponível por
 mais um mês.
 
 ### UC-07.03
-Ao final, o usuário responsável pela vaga acessa o seu painel para a vaga e seleciona o opção finalizar de fato o processo de captação de profissionais.
+Ao final, o usuário responsável pela vaga acessa o seu painel para a vaga e seleciona a opção finalizar de fato o processo de captação de profissionais.
 
 ### UC-07.04
-Ao final, o usuário responsável não extende ou fecha a vaga, com isso o sistema fecha a vaga após dois dias como comportamento padrão.
+Ao final, o usuário responsável não estende ou fecha a vaga, com isso o sistema fecha a vaga após dois dias como comportamento padrão.
 
 ### UC-08.01
 O usuário responsável pela vaga deseja acessar o sistema para visualizar mais informações sobre o perfil dos usuários que tiveram uma nota maior ou
@@ -188,7 +193,7 @@ da vaga, além de disponibilizar um relatório sobre o andamento dos processos.
 
 - Candidato: Profissional de TI que está buscando uma vaga.
 - Profissional de RH: Responsável por realizar a publicação da vaga e manutenção das vagas.
-- Gerente: Responsável por criar e delegar acessos a plataforma de publicação de vagas, além das
+- Gerente: Responsável por criar e delegar acessos à plataforma de publicação de vagas, além das
 ações disponíveis para o profissional de RH.
 
 # Diagrama de classes
@@ -207,25 +212,66 @@ de experiência, mostrou que majoritariamente o uso de interfaces analógicas pa
 analógicos somente 38% era arquivado e sobrevivia por alguns dias, já no meio digital 94% do conteúdo era arquivo e
 sobrevivia por meses.
 
-Entres os diagramas, 47% mostraram que ajudavam a entender o código que foi criado por outras pessoas. Os principais
+Entres os diagramas, 47% mostraram que ajudavam a entender o código criado por outras pessoas. Os principais
 objetivos dos diagramas eram: realizar o design do software, explicar e entender o que foi feito – mostrando que a
-utilização do diagrama e o correto arquivamento das evidências geradas ajuda o time seja relembrando conceitos,
+utilização do diagrama e o correto arquivamento das evidências geradas ajudam o time seja relembrando conceitos,
 explicando para novos desenvolvedores ou para pessoas envolvidas com as regras de negócio.
 
 <h3 id="diagrama-de-classes-objetivo">Objetivo</h2>
 
-Com base nos requisitos acima, casos de uso e diagrama de classes esboçaremos um  sistema para a empresa VenturaSoft
-focado na recolocação de profssionais de TI.
+Com base nos requisitos acima, casos de uso e diagrama de classes esboçaremos um sistema para a empresa VenturaSoft
+focado na recolocação de profissionais de TI.
 
-O diagrama de classes abaixo é uma representação do sistema, não contendo os possíveis metódos e atributos nesse momento,
+O diagrama de classes abaixo é uma representação do sistema, não contendo os possíveis métodos e atributos nesse momento,
 de tal forma que o foco é o nome das classes, relacionamentos e multiplicidade.
 
 
 ### Diagrama
 
-O diagrama de classe abaixo aprenseta o nome das classes, relacionamento e multiplicidade:
+O diagrama de classe abaixo apresenta o nome das classes, relacionamento e multiplicidade:
 
 
 <p align="center">
     <img src="./docs/ClassDiagram.jpg" align="center" alt="Digrama de classes" title="Digrama de classes">
 </p>
+
+
+# Processo de Desenvolvimento de Software
+
+## Ciclo de vida
+Dentre os ciclos de vida disponíveis, o que Exploratório é o ciclo mais adequado para o processo de desenvolvimento do venturahr,
+dado que a equipe é enxuta, uma única pessoa, e a diversidade de experiências é reduzida por esse fato, dificuldades surgiram ao longo
+do projeto, fazendo com que seja mais simples se adequar com uma estrutura menos rígida.
+
+
+## Processo Unificado
+De forma geral, iremos implementar as principais características do Processo Unificado, são elas:
+
+- Processo incremental: Toda interação irá resultar em um incremento comparado com a versão anterior.
+- Arquitetura: Focar na arquitetura do projeto, fazendo com que seja possível tomar diferentes decisões ao longo do projeto
+sem ter que pagar um preço alto, do ponto de vista técnico e tempo, devido a decisões que limitaram o escopo de ação.
+- Risco: Iremos focar na parte mais critica do projeto, isto é, que entrega o maior valor e possui a maior dificuldade envolvida,
+o que poderia impossibilitar a construção do sistema.
+
+## Etapas
+O processo pode ser dividido em:
+
+- Concepção: No qual iremos investir tempo em descobrir o projeto a ser construído, tomando pequenas decisões ao longo do processo, que buscam
+entregar valor, tais como, criação de metas, comunicação com os stakeholders sobre a visão e idealização do projeto.
+
+- Construção: Na etapa que iremos de fato construir o projeto, buscando implementar pequenas funcionalidades que nos permita entregar valor
+rapidamente e colher novos feedbacks dos stakeholders, para caso seja necessário adequar
+
+- Transição: Momento que iremos passar o conhecimento de forma definitiva sobre o sistema e finalizar possíveis documentos sobre o funcionamento
+e decisões tomadas ao longo do projeto.
+
+## Desenvolvimento ágil
+Para esse projeto iremos manter os elementos os seguintes elementos do desenvolvimento ágil:
+
+- Entrega contínua: Realizar a entrega de pequenas funcionalidades que entregam valor de forma contínua para o venturahr.
+- Progresso: Iremos medir o nosso progresso com base no software desenvolvido, e não somente por documentações ou reuniões.
+- Qualidade: Continua atenção a qualidade do produto sendo desenvolvido, dessa forma não iremos gerar retrabalho e necessidade
+de aumentar o prazo para conseguir implementar uma nova funcionalidade.
+- Cliente: Manter a proximidade com o cliente para podermos colher feedbacks constantes sobre a evolução do projeto.
+- Comunicação: Buscar o engajamento no projeto, além de excelentes documentos que mostram os motivos por trás das decisões técnicas
+e de negócios feitas no passado.
