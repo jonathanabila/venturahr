@@ -223,6 +223,9 @@ de tal forma que o foco é o nome das classes, relacionamentos e multiplicidade.
 
 ### Diagrama
 
-[//]: # (<p align="center">)
-[//]: # (    <img src="./docs/ClassDiagram.jpg" align="center" alt="Digrama de classes" title="Digrama de classes">)
-[//]: # (</p>)
+O diagrama de classe abaixo aprenseta o nome das classes, relacionamento e multiplicidade:
+
+
+<p align="center">
+    <img src="./docs/ClassDiagram.jpg" align="center" alt="Digrama de classes" title="Digrama de classes">
+</p>
