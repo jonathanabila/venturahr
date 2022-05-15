@@ -30,6 +30,7 @@
 - [Atores](#atores)
 - [Requisitos](#requisitos)
   - [Casos de uso](#casos-de-uso)
+  - [Matriz_de_Requisitos](#matriz-de-requisitos)
 - [Diagrama de Classes](#diagrama-de-classes)
   - [Introdução](#introdução)
   - [Objetivo](#diagrama-de-classes-objetivo)
@@ -81,9 +82,12 @@ ter para cumprir os seus objetivos.
 ### UC-01
 O usuário acesso o site e não está logado. Dessa forma, seleciona a opção para realizar o login para acessar a rede social.
 
-### UC-02
+### UC-02.01
 O usuário acessa o site, porém não possui um perfil, para tal ele seleciona a opção de criar um perfil para visualizar e possivelmente
 se candidatar as vagas.
+
+### UC-02.02
+O usuário após acessar o site, deve ser capaz de atualizar as suas informações pessoais, tais como meios de contato.
 
 ### UC-03
 O usuário acessa o site, porém não possui um acesso para publicar as vagas, nesse caso o profissional precisa entrar em contato com o
@@ -145,7 +149,7 @@ mais um mês.
 ### UC-07.03
 Ao final, o usuário responsável pela vaga acessa o seu painel para a vaga e seleciona o opção finalizar de fato o processo de captação de profissionais.
 
-### UC-07.03
+### UC-07.04
 Ao final, o usuário responsável não extende ou fecha a vaga, com isso o sistema fecha a vaga após dois dias como comportamento padrão.
 
 ### UC-08.01
@@ -154,6 +158,23 @@ iqual ao perfil da vaga.
 
 ### UC-08.02
 O usuário seleciona o perfil de um usuário com a nota maior que o perfil da vaga e consegue visualizar informações de contato com o profissional.
+
+## Matriz de Requisitos
+
+| ID    | Nome     | Descrição                                                                                                              | Prioridade | Complexidade | Observações                                                                                                                                                                                                                           |
+|-------|----------|------------------------------------------------------------------------------------------------------------------------|------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| RF-01 | UC-01    | O usuário deve ser capaz de realizar o login na plataforma, sendo uma empresa ou candidato.                            | Essencial  | Médio        | A complexidade do login depende do sistema que estiver sendo utilizado e do framework que irá lidar com todo o processo de autenticação.                                                                                              |
+| RF-02 | UC-02.01 | O usuário deve ser capaz de criar a sua conta de candidato de forma autônoma.                                          | Essencial  | Médio        | A complexidade por trás dessa funcionalidade é devido ao processo como um todo, e não a característica do tipo da conta.                                                                                                              |
+| RF-03 | UC-02.02 | O usuário deve ser capaz de alterar os dados pessoais.                                                                 | Importante | Fácil        | Após a implementação do perfil do usuário, realizar a atualização dos seus dados cadastrais não é complicado. Porém, não é uma feature essencial para o MVP, dado que o sistema não depende dessa característica para entregar valor. |
+| RF-04 | UC-03    | O usuário da empresa deve ser capaz de realizar o login utilizando seus dados de acesso.                               | Essencial  | Médio        | A diferenciação dos perfis não é algo complexo, após implementado o login pode ser realizado por meio de páginas diferentes que passam paramêtros diferentes para especificar o usuário.                                              |
+| RF-05 | UC-04.01 | O usuário da empresa deve ser capaz de criar uma nova vaga.                                                            | Essencial  | Médio        | A criação da vaga também não apresenta complexidade, porém é um passo pequeno no processo de construção de todo o sistema.                                                                                                            |
+| RF-06 | UC-05.01 | O candidato deve conseguir se inscrever em uma vaga publicada por uma empresa.                                         | Essencial  | Médio        | A complexidade está no fato que devemos criar o relacionamento entre as entidades para persistir o candidato que se inscreveu.                                                                                                        |
+| RF-07 | UC-06.01 | O candidato deve ser capaz de acessar uma vaga por meio da url.                                                        | Desejável  | Fácil        | Compor a url com uma chave primária é suficiente para que o usuário possa acessar a vaga por meio da url.                                                                                                                             |
+| RF-08 | UC-07.01 | O sistema deve enviar um e-mail para o responsável pela vaga após o período de publicação da vaga.                     | Importante | Fácil        | Um sistema de job/cron é suficiente para iniciar o processo que envia o email.                                                                                                                                                        |
+| RF-09 | UC-07.02 | O responsável pela vaga deve ser capaz de extender a publicação da vaga após a 30 dias.                                | Importante | Fácil        | A alteracã́o deve ser realizada na tabela do banco de dados para que a data final seja alterada.                                                                                                                                     |
+| RF-10 | UC-07.03 | O responsável deve ser capaz de visualizar um compilado dos usuários que aplicaram a vaga e suas notas.                | Desejável  | Fácil        | Precisamos alimentar uma tabela com uma query simples sobre os usuários que aplicaram para a vaga.                                                                                                                                    |
+| RF-11 | UC-08.01 | O responsável pela vaga deve ser capaz de visualizar os dados de contato de um candidato após ele aplicar para a vaga. | Importante | Fácil        | Por meio das chaves primárias devemos disponibilizar as informações do candidato.                                                                                                                                                     |
+
 
 # Atores
 
