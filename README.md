@@ -30,7 +30,7 @@
 - [Atores](#atores)
 - [Requisitos](#requisitos)
   - [Casos de uso](#casos-de-uso)
-  - [Matriz_de_Requisitos](#matriz-de-requisitos)
+  - [Matriz de Requisitos](#matriz-de-requisitos)
 - [Diagrama de Classes](#diagrama-de-classes)
   - [Introdução](#introdução)
   - [Objetivo](#diagrama-de-classes-objetivo)
@@ -39,7 +39,7 @@
   - [Ciclo de vida](#ciclo-de-vida)
   - [Processo Unificado](#processo-unificado)
   - [Etapas](#etapas)
-  - [Desenvolvimento ágil](#desenvolvimento-ágila)
+  - [Desenvolvimento ágil](#desenvolvimento-ágil)
 
 # Introdução
 
@@ -52,12 +52,12 @@ exigindo conhecimentos que são muitas vezes impraticáveis.
 ## Escopo do projeto
 
 O escopo do projeto está ao redor do sistema VenturaHR, brevemente descrito acima, que permitira com que candidatos busquem
-vagas de empregos e apliquem o seu perfil para tal, e ao mesmo tempo permitirá as empresas realizar publicações em busca de candidatos
+vagas de empregos e apliquem o seu perfil para tal, e, em simultâneo, permitirá as empresas realizarem publicações em busca de candidatos
 que possuam o PMD (Perfil Mínimo Desejado) para a vaga.
 
-Para descrever o PMD a empresa poderá utilizar um rank indo de 1 (desejável) até 5 (obrigatório), além do peso atribuido para o critério -
+Para descrever o PMD a empresa poderá utilizar um rank indo de 1 (desejável) até 5 (obrigatório), além do peso atribuído para o critério -
 a partir do qual será possível calcular o perfil da oportunidade e seus candidatos, sendo que quanto maior o perfil do candidato com a vaga,
-maior é a sua compabilitibidade com os requisitos listados.
+maior é a sua compatibilidade com os requisitos listados.
 
 Um mapa mental com os requisitos descritos em alto nível do projeto pode ser visualizado nessa imagem:
 
@@ -116,11 +116,11 @@ um erro na tela explicando que o usuário deve adicionar um número mínimo de c
 
 ### UC-04.05
 Durante o processo de cadastro de uma vaga o usuário não adiciona nenhuma descrição para o critério, com isso o sistema não permite
-que a vaga seja salva mostrando que é necessário incluir as descrições para todos os critérios.
+que a vaga seja salva mostrando ser necessário incluir as descrições para todos os critérios.
 
 ### UC-05.01
-O candidato deseja se inscrever em uma vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário de
-acordo com o seu perfil, após finalizar o preenchimento ele salva e vê que sua candidatura foi concluída.
+O candidato deseja se inscrever em uma vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário conforme
+o seu perfil, após finalizar o preenchimento ele salva e vê que sua candidatura foi concluída.
 
 ### UC-05.02
 O candidato deseja se inscrever em uma vaga, para isso ele acessa a página da vaga e seleciona a opção para preencher o formulário,
@@ -185,7 +185,7 @@ O usuário seleciona o perfil de um usuário com a nota maior que o perfil da va
 
 A lista de atores para o sistema descrito acima, assim como os seus papéis, brevemente descritos, são:
 
-- Tempo: Agente responsável por realizar acionamento do sistema para funções que são programadas.
+- Tempo: Agente responsável por realizar acionamento do sistema para funções programadas.
 - Sistema de agregamento: Responsável por realizar o agregamento e elaboração do relatório ao final do período de publicação
 da vaga, além de disponibilizar um relatório sobre o andamento dos processos.
 - Sistema de autenticação: Responsável por realizar a autenticação e autorização dos usuários na plataforma.
