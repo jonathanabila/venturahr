@@ -31,16 +31,25 @@
 - [Requisitos](#requisitos)
   - [Casos de uso](#casos-de-uso)
   - [Matriz de Requisitos](#matriz-de-requisitos)
+- [Diagrama Sequenciais](#diagramas-sequencias)
+  - [Publicação da vaga](#publicação-da-vaga)
+  - [Resposta da vaga](#resposta-da-vaga)
 - [Diagrama de Classes](#diagrama-de-classes)
   - [Introdução](#introdução)
   - [Objetivo](#diagrama-de-classes-objetivo)
+  - [Modelo de Domínio](#modelo-de-domínio)
   - [Diagrama](#diagrama)
+  - [Projeto de Objetos](#projetos-de-objetos)
+    - [Diagrama](#diagrama-projeto-de-objetos)
+- [Tecnologias](#tecnologias)
+- [Principíos GRASP e Padrões GoF](#principíos-grasp-e-padrões-gof)
+  - [Principíos GRASP](#principíos-grasp)
+  - [Padrões GoF](#padrões-gof)
 - [Processo de Desenvolvimento de Software](#processo-de-desenvolvimento-de-software)
   - [Ciclo de vida](#ciclo-de-vida)
   - [Processo Unificado](#processo-unificado)
   - [Etapas](#etapas)
   - [Desenvolvimento ágil](#desenvolvimento-ágil)
-- [Tecnologias](#tecnologias) 
 
 # Introdução
 
@@ -80,6 +89,23 @@ ter para cumprir os seus objetivos.
 
 ## Referências
 - [Disciplined Agile Delivery: A Practitioner’s Guide to Agile Software Delivery in the Enterprise by](https://www.oreilly.com/library/view/disciplined-agile-delivery/9780132810098/)
+
+
+# Atores
+
+A lista de atores para o sistema descrito acima, assim como os seus papéis, brevemente descritos, são:
+
+- Tempo: Agente responsável por realizar acionamento do sistema para funções programadas.
+- Sistema de agregamento: Responsável por realizar o agregamento e elaboração do relatório ao final do período de publicação
+da vaga, além de disponibilizar um relatório sobre o andamento dos processos.
+- Sistema de autenticação: Responsável por realizar a autenticação e autorização dos usuários na plataforma.
+
+
+- Candidato: Profissional de TI que está buscando uma vaga.
+- Profissional de RH: Responsável por realizar a publicação da vaga e manutenção das vagas.
+- Gerente: Responsável por criar e delegar acessos à plataforma de publicação de vagas, além das
+ações disponíveis para o profissional de RH.
+
 
 # Requisitos
 
@@ -192,20 +218,14 @@ O usuário seleciona o perfil de um usuário com a nota maior que o perfil da va
 | NF-21 |          | O sistema deve possuir uma fácil execução local.                                                                       | Desejável  | Médio          | A experiência dos desenvolvedores irá ditar a velocidade com que novas funcionalidades podem ser entregues.                                                                                                                           |
 
 
-# Atores
+# Diagrama Sequenciais
 
-A lista de atores para o sistema descrito acima, assim como os seus papéis, brevemente descritos, são:
+## Publicação da vaga
+TODO
 
-- Tempo: Agente responsável por realizar acionamento do sistema para funções programadas.
-- Sistema de agregamento: Responsável por realizar o agregamento e elaboração do relatório ao final do período de publicação
-da vaga, além de disponibilizar um relatório sobre o andamento dos processos.
-- Sistema de autenticação: Responsável por realizar a autenticação e autorização dos usuários na plataforma.
+## Resposta da vaga
+TODO
 
-
-- Candidato: Profissional de TI que está buscando uma vaga.
-- Profissional de RH: Responsável por realizar a publicação da vaga e manutenção das vagas.
-- Gerente: Responsável por criar e delegar acessos à plataforma de publicação de vagas, além das
-ações disponíveis para o profissional de RH.
 
 # Diagrama de classes
 
@@ -236,6 +256,9 @@ focado na recolocação de profissionais de TI.
 O diagrama de classes abaixo é uma representação do sistema, não contendo os possíveis métodos e atributos nesse momento,
 de tal forma que o foco é o nome das classes, relacionamentos e multiplicidade.
 
+### Modelo de Domínio
+Nesse projeto o diagrama de classes e o modelo de domínio estão sendo apresentados juntamente devido a sua semelhança, reduzindo a 
+quantidade de documentos e criar uma situação melhor para manter o conteúdo atualizado.
 
 ### Diagrama
 
@@ -245,6 +268,37 @@ O diagrama de classe abaixo apresenta o nome das classes, relacionamento e multi
 <p align="center">
     <img src="./docs/ClassDiagram.jpg" align="center" alt="Digrama de classes" title="Digrama de classes">
 </p>
+
+## Projeto de Objetos
+
+### Diagrama Projeto de Objetos
+TODO
+
+# Tecnologias
+
+O projeto será desenvolvido para realizar a entrega do sistema venturaHR com base na execução em qualquer máquina, além de utilizar 
+tecnologias que estão no mercado atual e possuem suporte a atualizações de segurança constantes.
+
+Dessa forma, as tecnologias que serão utilizadas são:
+- Frontend
+  - React (HTML + CSS + Javascript)
+- Backend
+  - Django (Python)
+- Bando de dados
+  - PostgreSQL
+- Docker + Docker compose
+
+A utilização do docker permitira que possamos migrar entre diferentes ambiente sem ter que modificar o nosso projeto para que funcione 
+no ambiente, podendo realizar a portabilidade entre a AWS ECS para Heroku com facilidade, além de criar um ambiente local robusto 
+independente do sistema operacional utilizado.
+
+# Principíos GRASP e Padrões GoF
+
+## Principíos GRASP
+TODO
+
+## Padrões GoF
+TODO
 
 
 # Processo de Desenvolvimento de Software
@@ -286,22 +340,3 @@ de aumentar o prazo para conseguir implementar uma nova funcionalidade.
 - Cliente: Manter a proximidade com o cliente para podermos colher feedbacks constantes sobre a evolução do projeto.
 - Comunicação: Buscar o engajamento no projeto, além de excelentes documentos que mostram os motivos por trás das decisões técnicas
 e de negócios feitas no passado.
-
-
-# Tecnologias
-
-O projeto será desenvolvido para realizar a entrega do sistema venturaHR com base na execução em qualquer máquina, além de utilizar 
-tecnologias que estão no mercado atual e possuem suporte a atualizações de segurança constantes.
-
-Dessa forma, as tecnologias que serão utilizadas são:
-- Frontend
-  - React (HTML + CSS + Javascript)
-- Backend
-  - Django (Python)
-- Bando de dados
-  - PostgreSQL
-- Docker + Docker compose
-
-A utilização do docker permitira que possamos migrar entre diferentes ambiente sem ter que modificar o nosso projeto para que funcione 
-no ambiente, podendo realizar a portabilidade entre a AWS ECS para Heroku com facilidade, além de criar um ambiente local robusto 
-independente do sistema operacional utilizado.
