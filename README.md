@@ -13,7 +13,7 @@
     <br>
     <h3>Instituto INFNET - INFNET</h3>
     <br>
-    <h4>TESTE DE PERFORMANCE - TP1</h4>
+    <h4>TESTE DE PERFORMANCE - TP3</h4>
     <h4>ENGENHARIA DISCIPLINADA DE SOFTWARE</h4>
     <h4>ALUNO: JONATHAN TOLENTINO ABILA</h4>
     <h4>PROFESSOR: ARMÊNIO TORRES</h4>
@@ -40,6 +40,7 @@
   - [Processo Unificado](#processo-unificado)
   - [Etapas](#etapas)
   - [Desenvolvimento ágil](#desenvolvimento-ágil)
+- [Tecnologias](#tecnologias) 
 
 # Introdução
 
@@ -285,3 +286,22 @@ de aumentar o prazo para conseguir implementar uma nova funcionalidade.
 - Cliente: Manter a proximidade com o cliente para podermos colher feedbacks constantes sobre a evolução do projeto.
 - Comunicação: Buscar o engajamento no projeto, além de excelentes documentos que mostram os motivos por trás das decisões técnicas
 e de negócios feitas no passado.
+
+
+# Tecnologias
+
+O projeto será desenvolvido para realizar a entrega do sistema venturaHR com base na execução em qualquer máquina, além de utilizar 
+tecnologias que estão no mercado atual e possuem suporte a atualizações de segurança constantes.
+
+Dessa forma, as tecnologias que serão utilizadas são:
+- Frontend
+  - React (HTML + CSS + Javascript)
+- Backend
+  - Django (Python)
+- Bando de dados
+  - PostgreSQL
+- Docker + Docker compose
+
+A utilização do docker permitira que possamos migrar entre diferentes ambiente sem ter que modificar o nosso projeto para que funcione 
+no ambiente, podendo realizar a portabilidade entre a AWS ECS para Heroku com facilidade, além de criar um ambiente local robusto 
+independente do sistema operacional utilizado.
