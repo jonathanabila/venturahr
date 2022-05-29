@@ -220,11 +220,19 @@ O usuário seleciona o perfil de um usuário com a nota maior que o perfil da va
 
 # Diagrama Sequenciais
 
+Os diagramas abaixo apresentam a sequência de comunicação entre o Ator e o sistema, dessa forma só está representado o fluxo para o caminho feliz, 
+isto é, simples e direto.
+
 ## Publicação da vaga
-TODO
+<p align="center">
+    <img src="./docs/NewOpportunity.jpg" align="center" alt="Digrama Sequência para Publicação de vaga" title="Digrama Sequência para Publicação de vaga">
+</p>
+
 
 ## Resposta da vaga
-TODO
+<p align="center">
+    <img src="./docs/AnswerOpportunity.jpg" align="center" alt="Digrama Sequência para Resposta de vaga" title="Digrama Sequência para Resposta de vaga">
+</p>
 
 
 # Diagrama de classes
