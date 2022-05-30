@@ -89,6 +89,7 @@ ter para cumprir os seus objetivos.
 
 ## Referências
 - [Disciplined Agile Delivery: A Practitioner’s Guide to Agile Software Delivery in the Enterprise by](https://www.oreilly.com/library/view/disciplined-agile-delivery/9780132810098/)
+- [Diagramas Estruturais da UML: Diagrama de Objetos](https://micreiros.com/diagrama-de-objetos/)
 
 
 # Atores
@@ -310,12 +311,23 @@ independente do sistema operacional utilizado.
 
 # Principíos GRASP e Padrões GoF
 
-## Principíos GRASP
-TODO
+Tanto quanto os principíos GRASP e os padrões GoF buscam tornar o código mais flexível, fácil de manter e objetio, tornando a continuidade 
+do projeto muito mais simples do ponto de vista técnico.
 
-## Padrões GoF
-TODO
+Os principíos GRAPS possuem alguns conceitos básicos da orientação a objeto, tais como encapsulamento, abstração e polimorfismo, e dentro do catálogo 
+há outros padrões conhecidos.
 
+Já os padrões GoF (Gang of Four) são referentes a série de livros escritas sobre melhores práticas de programação, buscando o mesmo objetivo do GRASP, porém
+de uma maneira diferente.
+
+## Aplicação
+
+Nenhum dos nomes conhecidos no GoF foram utilizados no projeto de maneira direta, entretanto é possível corrrelacionar algumas classes:
+- Services <-> Builder: Responsável por encapsular (GRAPS) a construção dos objetos e as regras de negócio.
+- Decorator <-> LoginView: Responsável por realizar a interação com o usuário (Controller) e permitir ou não o acesso.
+- Command <-> Models: Responsável por encapsular (GRAPS) a relação com o banco de dados, removendo o acoplamento entre a aplicação e o banco de dados.
+
+Dessa forma, a aplicação aplica e aplicará mais conceitos, tais como Singletons para manter as views rodando uma única instância e as descritas acima.
 
 # Processo de Desenvolvimento de Software
 
