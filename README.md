@@ -280,7 +280,15 @@ O diagrama de classe abaixo apresenta o nome das classes, relacionamento e multi
 ## Projeto de Objetos
 
 ### Diagrama Projeto de Objetos
-TODO
+Não encontrei nenhuma referência no material do UML sobre Projeto de Objetos, dessa forma, acredito que se trate do diagrama de objetos, dessa forma 
+esse será apresentado a seguir:
+
+### Diagrama
+
+<p align="center">
+    <img src="./docs/ObjectDiagram.jpg" align="center" alt="Digrama de objetos" title="Digrama de objetos">
+</p>
+
 
 # Tecnologias
 
