@@ -23,6 +23,7 @@ factory-boy = "^3.2.1"
 Faker = "^13.11.0"
 pytest-factoryboy = "^2.2.1"
 django-admin = "^2.0.1"
+djhtml = "^1.5.0"
 
 [tool.black]
 line-length = 100

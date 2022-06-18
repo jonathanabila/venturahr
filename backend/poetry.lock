@@ -194,6 +194,17 @@ django = ">=2.2"
 pytz = "*"
 
 [[package]]
+name = "djhtml"
+version = "1.5.0"
+description = "Django/Jinja template indenter"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.extras]
+dev = ["black", "flake8", "isort", "nox", "pre-commit"]
+
+[[package]]
 name = "docopt"
 version = "0.6.2"
 description = "Pythonic argument parser, that will make you smile"
@@ -686,7 +697,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "73cd65eaaf0edf3190d16a2eda6331562389158af0cb432412ed08e30bf6b967"
+content-hash = "f55ed6d933bc2811d0488e894dedd540da48ef66f667aca5766ad8ccb8eaf35e"
 
 [metadata.files]
 appdirs = [
@@ -816,6 +827,9 @@ django-six = [
 djangorestframework = [
     {file = "djangorestframework-3.13.1-py3-none-any.whl", hash = "sha256:24c4bf58ed7e85d1fe4ba250ab2da926d263cd57d64b03e8dcef0ac683f8b1aa"},
     {file = "djangorestframework-3.13.1.tar.gz", hash = "sha256:0c33407ce23acc68eca2a6e46424b008c9c02eceb8cf18581921d0092bc1f2ee"},
+]
+djhtml = [
+    {file = "djhtml-1.5.0.tar.gz", hash = "sha256:eeccc5e5cc6d1371e8434903de5043b24efa1000b6857b9bf342e1868aa995ae"},
 ]
 docopt = [
     {file = "docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"},
