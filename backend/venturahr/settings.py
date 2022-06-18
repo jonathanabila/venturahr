@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
 
+# https://docs.djangoproject.com/en/4.0/ref/settings/#std-setting-LOGIN_URL
+LOGIN_URL = "/login/"
+LOGOUT_REDIRECT_URL = "/home/"
 
 # Application definition
 
