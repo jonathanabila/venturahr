@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # custom
     "opportunities",
     "core",
+    "companies",
 ]
 
 MIDDLEWARE = [

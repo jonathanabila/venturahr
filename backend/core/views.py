@@ -16,11 +16,7 @@ class HomePageView(VenturaHRView, generic.base.TemplateView):
 
 
 class VenturaHRLoginView(LoginView):
-    template_name = "core/login.html"
-
-    @property
-    def next_page(self):
-        return "/company/"
+    template_name = "login.html"
 
 
 class VenturaHRLoginRequiredView(LoginRequiredMixin, VenturaHRView):
