@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  venturahr_db:
+    image: postgres:14.3
+    # You can all queries executed on the database by uncomment this
+#    command: [ "postgres", "-c", "log_statement=all", "-c", "log_destination=stderr" ]
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - venturahr_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - venturahr_net
+
+  venturahr_api:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    image: infnet/venturahr-api:local
+    container_name: venturahr_api
+    command: python manage.py runserver 0.0.0.0:8081
+    env_file:
+      - .env.default
+    volumes:
+      - ./backend/:/app/
+    ports:
+      - "8081:8081"
+    networks:
+      - venturahr_net
+    depends_on:
+      - venturahr_db
+
+
+volumes:
+  venturahr_db_data:
+
+networks:
+  venturahr_net:
+    driver: bridge
