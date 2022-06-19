@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views import View, generic
 
-from core.forms import SignUpForm
+from core.forms import RegistrationForm
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ class HomePageView(VenturaHRView, generic.base.TemplateView):
 
 
 class VenturaHRRegisterView(generic.CreateView):
-    form_class = SignUpForm
+    form_class = RegistrationForm
 
     template_name = "core/register.html"
     success_url = reverse_lazy("core:login")

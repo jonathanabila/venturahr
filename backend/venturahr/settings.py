@@ -78,6 +78,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "venturahr.wsgi.application"
 
+# Auth
+AUTH_USER_MODEL = "core.User"
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
