@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("core.urls")),
     path("", RedirectView.as_view(url="home/")),
     path("companies/", include("companies.urls")),
+    path("candidates/", include("candidates.urls")),
 ]
