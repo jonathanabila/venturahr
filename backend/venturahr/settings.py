@@ -85,7 +85,7 @@ WSGI_APPLICATION = "venturahr.wsgi.application"
 DB_NAME_PRIMARY = os.getenv("DB_NAME", "postgres")
 DB_USER_PRIMARY = os.getenv("DB_USER", "postgres")
 DB_PASSWORD_PRIMARY = os.getenv("DB_PASSWORD", "postgres")
-DB_HOST_PRIMARY = os.getenv("DB_HOST", "venturahr_db")
+DB_HOST_PRIMARY = os.getenv("DB_HOST", "localhost")
 DB_PORT_PRIMARY = os.getenv("DB_PORT", 5432)
 
 DATABASES = {
