@@ -115,7 +115,7 @@ ações disponíveis para o profissional de RH.
 ## Casos de uso
 
 ### UC-01
-O usuário acesso o site e não está logado. Dessa forma, seleciona a opção para realizar o login para acessar a rede social.
+O usuário acesso o site e não está logado. Dessa forma, seleciona a opção para realizar o login para acessar a plataforma.
 
 ### UC-02.01
 O usuário acessa o site, porém não possui um perfil, para tal ele seleciona a opção de criar um perfil para visualizar e possivelmente
@@ -344,6 +344,13 @@ banco de dados bem construído.
   - Necessita de uma consciência e estruturação maior antes da implementação, já que processamento analítico
 consome uma muitos recursos disponíveis.
 
+# Plano de Projeto
+Para as seguintes interações os entregais serão:
+- Atualização cadastral (UC-02)
+- Publicação de vagas (UC-04)
+- Inscrição na vaga (UC-05)
+
+Com seus respectivos sub casos de uso.
 
 # Principíos GRASP e Padrões GoF
 
