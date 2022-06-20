@@ -44,6 +44,7 @@
 - [Tecnologias](#tecnologias)
   - [Comparações](#comparações)
 - [Plano de Projeto](#plano-de-projeto)
+- [Glossário](#glossário)
 - [Principíos GRASP e Padrões GoF](#principíos-grasp-e-padrões-gof)
   - [Principíos GRASP](#principíos-grasp)
   - [Padrões GoF](#padrões-gof)
@@ -351,6 +352,16 @@ Para as seguintes interações os entregais serão:
 - Inscrição na vaga (UC-05)
 
 Com seus respectivos sub casos de uso.
+
+# Glossário
+Para o projeto VenturaHR o glossário disponível é:
+- Perfil Mínimo Desejado (PMD): O perfil mínimo desejado é o valor mínimo para o perfil do candidato. A conta
+é feita somando todos os pre-requisitos e multiplicando pelo peso associado, esse valor seria o perfil do candidate.
+- Data de Expiração: Data em que a vaga irá ser desativada no sistema.
+- Candidato: Pessoa que possui acesso ao sistema para se cadastrar em vagas.
+- Empresa: Unidade representativa para criar um elo entre as vagas e os candidatos.
+- Gerente: Pessoa que criou a empresa, e com isso é responsável por delegar os acessos à conta.
+- Profissional de RH: Pessoa que possui acesso à conta e é responsável por publicar as vagas
 
 # Principíos GRASP e Padrões GoF
 
