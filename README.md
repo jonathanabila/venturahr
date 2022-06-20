@@ -42,6 +42,8 @@
   - [Projeto de Objetos](#projetos-de-objetos)
     - [Diagrama](#diagrama-projeto-de-objetos)
 - [Tecnologias](#tecnologias)
+  - [Comparações](#comparações)
+- [Plano de Projeto](#plano-de-projeto)
 - [Principíos GRASP e Padrões GoF](#principíos-grasp-e-padrões-gof)
   - [Principíos GRASP](#principíos-grasp)
   - [Padrões GoF](#padrões-gof)
@@ -298,7 +300,7 @@ tecnologias que estão no mercado atual e possuem suporte a atualizações de se
 
 Dessa forma, as tecnologias que serão utilizadas são:
 - Frontend
-  - React (HTML + CSS + Javascript)
+  - Django Template (HTML + CSS + Javascript)
 - Backend
   - Django (Python)
 - Bando de dados
@@ -309,9 +311,43 @@ A utilização do docker permitira que possamos migrar entre diferentes ambiente
 no ambiente, podendo realizar a portabilidade entre a AWS ECS para Heroku com facilidade, além de criar um ambiente local robusto
 independente do sistema operacional utilizado.
 
+
+## Comparações
+
+Para chegar nas tecnologias utilizadas exite duas maneiras de visualizar a situação:
+- Tecnologia
+- Frameworks
+
+A escolha da tecnologia, foi baseada em qual eu possuo mais familiaridade, dessa forma, as escolhas eram:
+- Python: Python é a linguagem que utilizei e utilizo pelos últimos 4 anos.
+- Javascript: Possuo alguma familiaridade, porém desconheço muitos dos passos necessários para uma boa arquitetura.
+- Java: Todo o conhecimento que possuo foi gerado na faculdade ao longo do processo de graduação.
+
+Dessa forma, a escolha de tecnologia foi bem simples, isto é, tecnologia que possuo mais familiaridade.
+
+Entre as ferramentas disponíveis para a construção dos sistemas há uma lista gigantesca, porém seguindo o mesmo,
+familiaridade, as opções eram:
+
+Banco de dados
+- NoSQL:
+  - Fácil de implementar, dado que possui diversas integrações e ORMs.
+  - Consegue receber uma quantidade muito grande de requisições sem necessitar de escalabilidade vertical.
+  - Possui diversos serviços que fornecem a estrutura com um contrato semelhante:
+  - Difícil de manter um sistema de chave estrangeira.
+  - Composição de índices depende da tecnologia utilizada, DynamoDB vs MongoDB, por exemplo.
+- PostgreSQL vs MySQL:
+  - Escalabilidade horizontal ótima, além de suportar uma grande quantidade de requisições em um
+banco de dados bem construído.
+  - Possui diversas integrações com frameworks e ORMs disponíveis no mercado.
+  - Diversas clouds possuem implementações que são compatíveis entre si, facilitando a implementação.
+  - Diferente do NoSQL necessita de um controle ativo para a estrutura do banco de dados.
+  - Necessita de uma consciência e estruturação maior antes da implementação, já que processamento analítico
+consome uma muitos recursos disponíveis.
+
+
 # Principíos GRASP e Padrões GoF
 
-Tanto quanto os principíos GRASP e os padrões GoF buscam tornar o código mais flexível, fácil de manter e objetio, tornando a continuidade
+Tanto quanto os principíos GRASP e os padrões GoF buscam tornar o código mais flexível, fácil de manter e objetivo, tornando a continuidade
 do projeto muito mais simples do ponto de vista técnico.
 
 Os principíos GRAPS possuem alguns conceitos básicos da orientação a objeto, tais como encapsulamento, abstração e polimorfismo, e dentro do catálogo
@@ -322,7 +358,7 @@ de uma maneira diferente.
 
 ## Aplicação
 
-Nenhum dos nomes conhecidos no GoF foram utilizados no projeto de maneira direta, entretanto é possível corrrelacionar algumas classes:
+Nenhum dos nomes conhecidos no GoF foram utilizados no projeto de maneira direta, entretanto é possível correlacionar algumas classes:
 - Services <-> Builder: Responsável por encapsular (GRAPS) a construção dos objetos e as regras de negócio.
 - Decorator <-> LoginView: Responsável por realizar a interação com o usuário (Controller) e permitir ou não o acesso.
 - Command <-> Models: Responsável por encapsular (GRAPS) a relação com o banco de dados, removendo o acoplamento entre a aplicação e o banco de dados.
