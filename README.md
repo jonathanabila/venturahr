@@ -22,6 +22,7 @@
 
 # Índice
 - [Índice](#índice)
+- [Instruções](#instruções)
 - [Introdução](#introdução)
   - [Propósito do documento](#propósito-do-documento)
   - [Escopo do projeto](#escopo-do-projeto)
@@ -53,6 +54,25 @@
   - [Processo Unificado](#processo-unificado)
   - [Etapas](#etapas)
   - [Desenvolvimento ágil](#desenvolvimento-ágil)
+
+# Instruções
+
+## Aplicação
+Para executar a aplicação o comando deve ser:
+
+```bash
+docker-compose up
+```
+
+Com isso a aplicação será executada no endereço `http://0.0.0.0:8081/`.
+
+## Banco de dados
+Não é necessário realizar nenhum comando para a criação das tabelas no banco de dados, já que todo
+o processo é controlado pelo docker, entretanto, se quiser forçar o processo pode executar:
+
+```bash
+docker-compose up venturahr_migrator
+```
 
 # Introdução
 

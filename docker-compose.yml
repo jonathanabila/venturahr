@@ -34,6 +34,22 @@ services:
     depends_on:
       - venturahr_db
 
+  venturahr_migrator:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    image: infnet/venturahr-api:local
+    container_name: venturahr_migrator
+    command: python manage.py migrate
+    env_file:
+      - .env.default
+    volumes:
+      - ./backend/:/app/
+    networks:
+      - venturahr_net
+    depends_on:
+      - venturahr_db
+
 
 volumes:
   venturahr_db_data:
