@@ -13,7 +13,7 @@
     <br>
     <h3>Instituto INFNET - INFNET</h3>
     <br>
-    <h4>TESTE DE PERFORMANCE - TP5</h4>
+    <h4>TESTE DE PERFORMANCE - TP7</h4>
     <h4>ENGENHARIA DISCIPLINADA DE SOFTWARE</h4>
     <h4>ALUNO: JONATHAN TOLENTINO ABILA</h4>
     <h4>PROFESSOR: ARMÊNIO TORRES</h4>
@@ -78,7 +78,7 @@ Um mapa mental com os requisitos descritos em alto nível do projeto pode ser vi
     <img src="./docs/mind_map_requirements.jpeg" align="center" alt="mapa mental dos requisitos" title="Mapa mental dos requisitos" height="1000px">
 </p>
 
-Também há o documento [Documento de Visão ](./docs/vision_venturasoft.pdf) que possui uma visão mais detalhada sobre a solução
+Também há o documento [Documento de Visão](./docs/vision_venturasoft.pdf) que possui uma visão mais detalhada sobre a solução
 desejado de uma maneira geral do ponto de vista de negócios.
 
 
