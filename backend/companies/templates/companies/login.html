@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+{% extends "companies/base.html" %}
 
 {% block content %}
     {% if form.errors %}
@@ -9,9 +9,15 @@
 
     <div class="container d-flex justify-content-center mt-3">
         <div>
-            <form method="post" action="{% url 'core:login' %}">
+            <form method="post" action="{% url 'companies:login' %}">
                 {% csrf_token %}
                 <table>
+                    {% block login %}{% endblock login %}
+                    <tr>
+                        <td>Company</td>
+                        <td>{{ form.company }}</td>
+                    </tr>
+                    <br>
                     <tr>
                         <td>{{ form.username.label_tag }}</td>
                         <td>{{ form.username }}</td>
@@ -22,8 +28,8 @@
                     </tr>
                 </table>
                 <div class="container d-flex justify-content-center" style="width: 10%;">
-                    <input type="submit" class="btn btn-primary btn-lg" value="Entrar" style="margin-right: 30px; margin-top: 30px;">
-                    <a href="{% url 'core:register' %}"><input type="button" class="btn btn-primary btn-lg" value="Registrar-se" style="margin-right: 30px; margin-top: 30px;"></a>
+                    <input type="submit" class="btn btn-primary btn-lg" value="Login" style="margin-right: 30px; margin-top: 30px;">
+                    <a href="{% url 'companies:register' %}"><input type="button" class="btn btn-primary btn-lg" value="Sign-up" style="margin-right: 30px; margin-top: 30px;"></a>
                     <input type="hidden" name="next" value="{{ next }}">
                 </div>
             </form>
