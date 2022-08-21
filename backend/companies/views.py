@@ -30,4 +30,4 @@ class CompaniesPrivateHomePageView(
 ):
     template_name = "companies/privates/home.html"
 
-    permission_required = "companies.view_company"
+    permission_required = "companies.view_companyuser"

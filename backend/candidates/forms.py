@@ -28,7 +28,12 @@ class CandidatesRegistrationForm(UserCreationForm):
         """
         with transaction.atomic():
             user = super().save(commit=True)
-            view_candidate_permission = Permission.objects.get(codename="view_candidate")
+
+            # Adds the permission
+            view_candidate_permission = Permission.objects.get(codename="view_candidateuser")
             user.user_permissions.add(view_candidate_permission)
+
+            # Saves the changes
+            user.save()
 
         return user

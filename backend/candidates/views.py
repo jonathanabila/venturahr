@@ -16,7 +16,7 @@ class CandidatesLoginPageView(VenturaHRView, LoginView):
     next_page = "candidates:private-home"
 
 
-class CandidatesRegisterView(VenturaHRView, generic.CreateView):
+class CandidatesRegisterView(generic.CreateView):
     form_class = CandidatesRegistrationForm
 
     template_name = "candidates/register.html"
@@ -28,4 +28,4 @@ class CandidatesPrivateHomePageView(
 ):
     template_name = "candidates/privates/home.html"
 
-    permission_required = "candidates.view_candidate"
+    permission_required = "candidates.view_candidateuser"

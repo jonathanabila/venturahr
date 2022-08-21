@@ -52,8 +52,10 @@ class CompaniesRegistrationForm(UserCreationForm):
             user.company = company
 
             # Adds the permission
-            view_permission = Permission.objects.get(codename="view_company")
-            user.user_permissions.add(view_permission)
+            view_permission = Permission.objects.filter(
+                codename__in=("view_companyuser", "view_company")
+            )
+            user.user_permissions.add(*view_permission)
 
             # Saves the changes
             user.save()
