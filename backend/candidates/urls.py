@@ -10,4 +10,9 @@ urlpatterns = [
     path("login/", views.CandidatesLoginPageView.as_view(), name="login"),
     path("register/", views.CandidatesRegisterView.as_view(), name="register"),
     path("private/home/", views.CandidatesPrivateHomePageView.as_view(), name="private-home"),
+    path(
+        "private/users/<int:pk>/edit",
+        views.CandidatesPrivateEditView.as_view(),
+        name="private-users-edit",
+    ),
 ]

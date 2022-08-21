@@ -29,11 +29,23 @@ class CandidatesRegistrationForm(UserCreationForm):
         with transaction.atomic():
             user = super().save(commit=True)
 
-            # Adds the permission
-            view_candidate_permission = Permission.objects.get(codename="view_candidateuser")
-            user.user_permissions.add(view_candidate_permission)
+            # Adds the permissions
+            candidate_permissions = Permission.objects.filter(
+                codename__in=("view_candidateuser", "change_candidateuser")
+            )
+            user.user_permissions.add(*candidate_permissions)
 
             # Saves the changes
             user.save()
 
         return user
+
+
+class CandidateUserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = CandidateUser
+        fields = ("username", "first_name", "last_name", "email")
+
+    username = forms.CharField(disabled=True)
+    first_name = forms.CharField(disabled=True)
+    last_name = forms.CharField(disabled=True)

@@ -11,6 +11,9 @@
                     <a class="nav-link active" href="{% url 'candidates:register' %}">Signup</a>
                 </li>
             {% endif %}
+            <li class="nav-item active">
+                <a class="nav-link active" href="{% url 'candidates:private-users-edit' user.id %}">Profile</a>
+            </li>
         {% endblock basenavbar %}
         <li class="nav-item active">
             <a class="nav-link active" href="{% url 'core:logout' %}">Logout</a>
