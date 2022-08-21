@@ -5,17 +5,12 @@
         <li class="nav-item active">
             <a class="nav-link active" href="{% url 'candidates:private-home' %}">VenturaHR - Candidates</a>
         </li>
-        {% block basenavbar %}
-            {% if not user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{% url 'candidates:register' %}">Signup</a>
-                </li>
-            {% endif %}
-            <li class="nav-item active">
-                <a class="nav-link active" href="{% url 'candidates:private-users-edit' user.id %}">Profile</a>
-            </li>
-        {% endblock basenavbar %}
+    </ul>
+    <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
+            <a class="nav-link active" href="{% url 'candidates:private-users-edit' user.id %}">{{ user.get_full_name }}</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link active" href="{% url 'core:logout' %}">Logout</a>
         </li>
     </ul>

@@ -23,3 +23,7 @@ class User(AbstractUser):
     @property
     def is_recruiter(self) -> bool:
         return self.has_perms((f"opportunities.{p}" for p in RECRUITER_PERMISSIONS))
+
+    @property
+    def get_full_name(self) -> str:
+        return super().get_full_name().title()
