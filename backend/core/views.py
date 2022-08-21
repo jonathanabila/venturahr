@@ -13,7 +13,11 @@ logger = logging.getLogger(__name__)
 class VenturaHRView(ABC, TemplateView):
     def dispatch(self, request, *args, **kwargs) -> HttpResponseRedirectBase:
         # If private is the path, and we redirect, we'll have a nice loop
-        if (user := request.user) and user.is_authenticated and "private" not in request.path:
+        if (
+            (user := request.user)
+            and user.is_authenticated
+            and not any(r in request.path for r in ["private", "logout"])
+        ):
             if user.company:
                 return redirect("companies:private-home")
             else:

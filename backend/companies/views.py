@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views import generic
@@ -22,3 +23,11 @@ class CompaniesRegisterView(generic.CreateView):
 
     template_name = "companies/register.html"
     success_url = reverse_lazy("companies:login")
+
+
+class CompaniesPrivateHomePageView(
+    VenturaHRView, PermissionRequiredMixin, generic.base.TemplateView
+):
+    template_name = "companies/privates/home.html"
+
+    permission_required = "companies.view_company"

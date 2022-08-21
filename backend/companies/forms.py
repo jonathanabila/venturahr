@@ -1,8 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.models import Permission
+from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
-from core.models import User
+from companies.models import Company, CompanyUser
 
 
 class CompaniesAuthenticationForm(AuthenticationForm):
@@ -20,7 +22,7 @@ class CompaniesRegistrationForm(UserCreationForm):
     company = forms.CharField(max_length=30, required=True)
 
     class Meta:
-        model = User
+        model = CompanyUser
         fields = (
             "username",
             "first_name",
@@ -29,3 +31,31 @@ class CompaniesRegistrationForm(UserCreationForm):
             "password1",
             "password2",
         )
+
+    def clean_company(self) -> str:
+        company_identifier = self.cleaned_data.get("company")
+        company = Company.objects.filter(identifier=company_identifier).first()
+        if not company:
+            self.add_error("company", "Company not found!")
+        return company_identifier
+
+    def save(self, commit=True):
+        """
+        Adds the permission to view the private page from Company App.
+        """
+        with transaction.atomic():
+            user = super().save(commit=True)
+
+            # Adds the company
+            company_identifier = self.cleaned_data.get("company")
+            company = Company.objects.filter(identifier=company_identifier).first()
+            user.company = company
+
+            # Adds the permission
+            view_permission = Permission.objects.get(codename="view_company")
+            user.user_permissions.add(view_permission)
+
+            # Saves the changes
+            user.save()
+
+        return user
