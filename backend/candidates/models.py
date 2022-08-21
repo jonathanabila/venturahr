@@ -1,6 +1,6 @@
 from core.models import User
 
 
-class Candidate(User):
+class CandidateUser(User):
     class Meta:
         proxy = True

@@ -1,12 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from companies.models import Company
-
 
 class User(AbstractUser):
     company = models.ForeignKey(
-        Company,
+        "companies.Company",
         null=True,
         on_delete=models.CASCADE,
         verbose_name="company",

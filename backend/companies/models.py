@@ -1,5 +1,7 @@
 from django.db import models
 
+from core.models import User
+
 
 class Company(models.Model):
     name = models.CharField(max_length=250)
@@ -7,3 +9,8 @@ class Company(models.Model):
 
     class Meta:
         unique_together = ("identifier",)
+
+
+class CompanyUser(User):
+    class Meta:
+        proxy = True

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Permission
 from django.db import transaction
 
-from candidates.models import Candidate
+from candidates.models import CandidateUser
 
 
 class CandidatesRegistrationForm(UserCreationForm):
@@ -12,7 +12,7 @@ class CandidatesRegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=50, required=True)
 
     class Meta:
-        model = Candidate
+        model = CandidateUser
         fields = (
             "username",
             "first_name",
