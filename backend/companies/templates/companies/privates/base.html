@@ -5,6 +5,11 @@
         <li class="nav-item active">
             <a class="nav-link active" href="{% url 'companies:private-home' %}">VenturaHR - Companies</a>
         </li>
+        {% if user.is_recruiter is False %}
+            <li class="nav-item active">
+                <a class="nav-link active" href="{% url 'companies:private-new-recruiter' %}">New Recruiter</a>
+            </li>
+        {% endif %}
         {% block basenavbar %} {% endblock basenavbar %}
         <li class="nav-item active">
             <a class="nav-link active" href="{% url 'core:logout' %}">Logout</a>

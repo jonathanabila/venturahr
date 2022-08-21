@@ -4,7 +4,8 @@ from django.contrib.auth.models import Permission
 from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
-from companies.models import Company, CompanyUser
+from companies.models import Company, CompanyRecruiterUser, CompanyUser
+from core.constants import RECRUITER_PERMISSIONS
 
 
 class CompaniesAuthenticationForm(AuthenticationForm):
@@ -54,6 +55,50 @@ class CompaniesRegistrationForm(UserCreationForm):
             # Adds the permissions
             view_permissions = Permission.objects.filter(
                 codename__in=("view_companyuser", "view_company")
+            )
+            user.user_permissions.add(*view_permissions)
+
+            # Saves the changes
+            user.save()
+
+        return user
+
+
+class CompaniesRecruiterRegistrationForm(UserCreationForm):
+    def __init__(self, *args, current_user, **kwargs):
+        self.current_user = current_user
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = CompanyRecruiterUser
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "password1",
+            "password2",
+        )
+
+    def save(self, commit=True):
+        """
+        Adds the permission to view the private page from Company App.
+        """
+        with transaction.atomic():
+            user = super().save(commit=True)
+
+            # Adds the company
+            user.company = self.current_user.company
+
+            # Adds the permissions
+            view_permissions = Permission.objects.filter(
+                codename__in=(
+                    # Company
+                    "view_companyuser",
+                    "view_company",
+                    # Opportunity
+                    *RECRUITER_PERMISSIONS,
+                )
             )
             user.user_permissions.add(*view_permissions)
 

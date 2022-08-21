@@ -3,7 +3,11 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views import generic
 
-from companies.forms import CompaniesAuthenticationForm, CompaniesRegistrationForm
+from companies.forms import (
+    CompaniesAuthenticationForm,
+    CompaniesRecruiterRegistrationForm,
+    CompaniesRegistrationForm,
+)
 from core.views import VenturaHRView
 
 
@@ -31,3 +35,19 @@ class CompaniesPrivateHomePageView(
     template_name = "companies/privates/home.html"
 
     permission_required = "companies.view_companyuser"
+
+
+class CompaniesNewRecruiterView(generic.CreateView):
+    form_class = CompaniesRecruiterRegistrationForm
+
+    template_name = "companies/privates/new_recruiter.html"
+    success_url = reverse_lazy("companies:private-home")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if hasattr(self, "object"):
+            kwargs.update({"current_user": self.request.user})
+        return kwargs
+
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, current_user=request.user, **kwargs)

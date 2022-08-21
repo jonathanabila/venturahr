@@ -14,3 +14,8 @@ class Company(models.Model):
 class CompanyUser(User):
     class Meta:
         proxy = True
+
+
+class CompanyRecruiterUser(User):
+    class Meta:
+        proxy = True
