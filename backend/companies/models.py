@@ -16,6 +16,6 @@ class CompanyUser(User):
         proxy = True
 
 
-class CompanyRecruiterUser(User):
+class CompanyRecruiterUser(CompanyUser):
     class Meta:
         proxy = True

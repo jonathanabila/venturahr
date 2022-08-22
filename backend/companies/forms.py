@@ -54,7 +54,13 @@ class CompaniesRegistrationForm(UserCreationForm):
 
             # Adds the permissions
             view_permissions = Permission.objects.filter(
-                codename__in=("view_companyuser", "view_company")
+                codename__in=(
+                    # Company
+                    "view_companyuser",
+                    "view_company",
+                    "change_companyuser",
+                    "change_companyrecruiteruser",
+                )
             )
             user.user_permissions.add(*view_permissions)
 
@@ -96,6 +102,8 @@ class CompaniesRecruiterRegistrationForm(UserCreationForm):
                     # Company
                     "view_companyuser",
                     "view_company",
+                    "change_companyuser",
+                    "change_companyrecruiteruser",
                     # Opportunity
                     *RECRUITER_PERMISSIONS,
                 )
@@ -106,3 +114,13 @@ class CompaniesRecruiterRegistrationForm(UserCreationForm):
             user.save()
 
         return user
+
+
+class CompanyUserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = CompanyUser
+        fields = ("username", "first_name", "last_name", "email")
+
+    username = forms.CharField(disabled=True)
+    first_name = forms.CharField(disabled=True)
+    last_name = forms.CharField(disabled=True)

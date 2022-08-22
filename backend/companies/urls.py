@@ -15,4 +15,9 @@ urlpatterns = [
         views.CompaniesNewRecruiterView.as_view(),
         name="private-new-recruiter",
     ),
+    path(
+        "private/users/<int:pk>/edit",
+        views.CompaniesPrivateEditView.as_view(),
+        name="private-users-edit",
+    ),
 ]
