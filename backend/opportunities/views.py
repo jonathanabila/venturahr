@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views import generic
 
 from core.constants import NAMESPACE_RECRUITER_PERMISSIONS
+from opportunities.constants import OPPORTUNITIES_PAGINATE_BY
 from opportunities.forms import OpportunityNewForm
 from opportunities.models import Opportunity
 
@@ -37,7 +38,9 @@ class OpportunitiesRecruiterOpportunityView(PermissionRequiredMixin, generic.Det
 
 class OpportunitiesRecruiterOpportunities(PermissionRequiredMixin, generic.ListView):
     model = Opportunity
-
     template_name = "opportunities/privates/list.html"
+
+    queryset = Opportunity.objects.all().order_by("expires_at")
+    paginate_by = OPPORTUNITIES_PAGINATE_BY
 
     permission_required = NAMESPACE_RECRUITER_PERMISSIONS
