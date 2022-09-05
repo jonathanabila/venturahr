@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from .constants import RECRUITER_PERMISSIONS
+from .constants import NAMESPACE_RECRUITER_PERMISSIONS
 
 
 class User(AbstractUser):
@@ -22,7 +22,7 @@ class User(AbstractUser):
 
     @property
     def is_recruiter(self) -> bool:
-        return self.has_perms((f"opportunities.{p}" for p in RECRUITER_PERMISSIONS))
+        return self.has_perms(NAMESPACE_RECRUITER_PERMISSIONS)
 
     @property
     def get_full_name(self) -> str:
