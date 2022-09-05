@@ -33,3 +33,11 @@ class OpportunitiesRecruiterOpportunityView(PermissionRequiredMixin, generic.Det
     template_name = "opportunities/privates/view.html"
 
     permission_required = NAMESPACE_RECRUITER_PERMISSIONS
+
+
+class OpportunitiesRecruiterOpportunities(PermissionRequiredMixin, generic.ListView):
+    model = Opportunity
+
+    template_name = "opportunities/privates/list.html"
+
+    permission_required = NAMESPACE_RECRUITER_PERMISSIONS

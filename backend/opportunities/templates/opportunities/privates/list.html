@@ -1,0 +1,16 @@
+{% extends "opportunities/privates/base.html" %}
+
+{% block content %}
+    <div class="container d-flex flex-column mt-5">
+        {% for opportunity in opportunity_list %}
+
+            <div class="mt-5">
+                <h1>{{ opportunity.name.title }}</h1>
+                <h4>{{ opportunity.company.name }}</h4>
+                <br/>
+                <p><strong>Description:</strong> {{ opportunity.description }}</p>
+                <p><strong>Expires At: </strong> {{ opportunity.expires_at }} </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
