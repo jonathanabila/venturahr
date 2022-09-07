@@ -4,12 +4,13 @@ from typing import Union
 from django import forms
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from django.forms import ModelForm
+from django.forms import BaseModelFormSet, ModelForm
 from django.utils import timezone
 
 from companies.models import CompanyRecruiterUser, CompanyUser
 from core.constants import MAXIMUM_OPPORTUNITY_INTERVAL, MINIMUM_OPPORTUNITY_INTERVAL
-from opportunities.models import Opportunity
+from core.models import User
+from opportunities.models import Opportunity, OpportunityRequirement
 
 
 class OpportunityNewForm(ModelForm):
@@ -54,3 +55,34 @@ class OpportunityNewForm(ModelForm):
             )
 
         return expires_at
+
+
+class OpportunityRequirementNewForm(ModelForm):
+    instance: OpportunityRequirement
+
+    class Meta:
+        model = OpportunityRequirement
+        fields = ["name", "description", "weight"]
+
+    name = forms.CharField(
+        widget=forms.TextInput(attrs={"class": "form-control", "required": "required"}),
+        required=True,
+    )
+
+    def save(
+        self, opportunity: Opportunity, created_by: User, commit=True
+    ) -> OpportunityRequirement:
+        with transaction.atomic():
+            self.instance.company = opportunity.company
+            self.instance.opportunity = opportunity
+            self.instance.created_by = created_by
+
+            requirement = super().save(commit=commit)
+
+        return requirement
+
+
+class OpportunityRequirementEmptyFormset(BaseModelFormSet):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **{**kwargs, "queryset": None})
+        self.queryset = OpportunityRequirement.objects.none()

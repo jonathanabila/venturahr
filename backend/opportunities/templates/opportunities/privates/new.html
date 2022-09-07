@@ -2,19 +2,71 @@
 
 {% block content %}
     <div class="container d-flex justify-content-center mt-5" style="width: 25%;">
-        <div class="col mt-5">
-            <form action="" method="post">
+        <div class="col">
+            <form action="" method="post" class="form-horizontal">
                 {% csrf_token %}
+
+                <h3>New Opportunity</h3>
                 <table class="table">
-                    {{form.as_table}}
+                    {{ opportunityform.as_table }}
                 </table>
+
+                <hr>
+                <br/>
+                <br/>
+
+                <div id="formset-container">
+                    <h4>Opportunity Requirements</h4>
+
+                    {{ formset.management_form }}
+                    {% for form in formset %}
+                        <div class="formset-form">
+                            <table class="table">
+                                {{ form.as_table }}
+                            </table>
+                        </div>
+                        <div class="input-group-append">
+                            <button id="add-form" class="btn btn-success add-form-row">+</button>
+                        </div>
+                    {% endfor %}
+                </div>
+
                 <div class="container d-flex justify-content-center" style="width: 10%;">
-                    <input type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-right: 30px; margin-top: 30px;">
-                    <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{% url 'companies:private-home' %}'; return false;" value="Cancel">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Submit"
+                        style="margin-right: 30px; margin-top: 30px;">
+                    <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;"
+                        onclick="window.location='{% url 'companies:private-home' %}'; return false;"
+                        value="Cancel">
                 </div>
             </form>
+
 
         </div>
     </div>
 
+{% endblock %}
+
+{% block custom_js %}
+    <script>
+        let formSet = document.querySelectorAll(".formset-form")
+        let container = document.querySelector("#formset-container")
+        let addButton = document.querySelector("#add-form")
+        let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+
+        let formNum = formSet.length - 1
+        addButton.addEventListener('click', addForm)
+
+        function addForm(e) {
+            e.preventDefault()
+
+            let newForm = formSet[0].cloneNode(true)
+            let formRegex = RegExp(`form-(\\d){1}-`, 'g')
+
+            formNum++
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+            container.appendChild(newForm)
+
+            totalForms.setAttribute('value', `${formNum + 1}`)
+        }
+    </script>
 {% endblock %}
