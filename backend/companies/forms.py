@@ -1,3 +1,5 @@
+import logging
+
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import Permission
@@ -6,6 +8,8 @@ from django.utils.translation import gettext_lazy as _
 
 from companies.models import Company, CompanyRecruiterUser, CompanyUser
 from core.constants import RECRUITER_PERMISSIONS
+
+logger = logging.getLogger(__name__)
 
 
 class CompaniesAuthenticationForm(AuthenticationForm):
@@ -37,7 +41,7 @@ class CompaniesRegistrationForm(UserCreationForm):
         company_identifier = self.cleaned_data.get("company")
         company = Company.objects.filter(identifier=company_identifier).first()
         if not company:
-            self.add_error("company", "Company not found!")
+            logger.debug(f"Company [{company}] not found, skipping validation")
         return company_identifier
 
     def save(self, commit=True):
@@ -49,7 +53,9 @@ class CompaniesRegistrationForm(UserCreationForm):
 
             # Adds the company
             company_identifier = self.cleaned_data.get("company")
-            company = Company.objects.filter(identifier=company_identifier).first()
+            company, _ = Company.objects.get_or_create(
+                identifier=company_identifier, name=company_identifier
+            )
             user.company = company
 
             # Adds the permissions
