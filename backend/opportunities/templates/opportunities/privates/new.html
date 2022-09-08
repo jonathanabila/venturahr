@@ -15,20 +15,22 @@
                 <br/>
                 <br/>
 
-                <div id="formset-container">
-                    <h4>Opportunity Requirements</h4>
-
-                    {{ formset.management_form }}
-                    {% for form in formset %}
-                        <div class="formset-form">
-                            <table class="table">
-                                {{ form.as_table }}
-                            </table>
-                        </div>
-                        <div class="input-group-append">
-                            <button id="add-form" class="btn btn-success add-form-row">+</button>
-                        </div>
-                    {% endfor %}
+                <div>
+                    <h3 class="mb-3">Opportunity Requirements</h3>
+                    <div id="formset-container">
+                        {{ formset.management_form }}
+                        {% for form in formset %}
+                            <div class="formset-form mb-5">
+                                <table class="table">
+                                    {{ form.as_table }}
+                                </table>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="input-group-append">
+                        <button id="add-form" class="btn btn-success add-form-row mr-2">+</button>
+                        <button id="remove-form" class="btn btn-warning remove-form-row">-</button>
+                    </div>
                 </div>
 
                 <div class="container d-flex justify-content-center" style="width: 10%;">
@@ -51,10 +53,12 @@
         let formSet = document.querySelectorAll(".formset-form")
         let container = document.querySelector("#formset-container")
         let addButton = document.querySelector("#add-form")
+        let removeButton = document.querySelector("#remove-form")
         let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
 
         let formNum = formSet.length - 1
         addButton.addEventListener('click', addForm)
+        removeButton.addEventListener('click', removeForm)
 
         function addForm(e) {
             e.preventDefault()
@@ -68,5 +72,23 @@
 
             totalForms.setAttribute('value', `${formNum + 1}`)
         }
+
+        function removeForm(e) {
+            e.preventDefault()
+
+            let containerItems = container.getElementsByTagName("div")
+            let form = containerItems.item(e.target)
+
+            if (containerItems.length <= 1) {
+                alert("You need to have at least one requirement!")
+                return
+            }
+
+            formNum--
+            form.remove()
+
+            totalForms.setAttribute('value', `${formNum}`)
+        }
+
     </script>
 {% endblock %}
