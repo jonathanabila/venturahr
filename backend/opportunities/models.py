@@ -38,6 +38,7 @@ class OpportunityRequirement(models.Model):
         null=False,
         on_delete=models.CASCADE,
         verbose_name="opportunity",
+        related_name="requirements",
     )
 
     company = models.ForeignKey(
