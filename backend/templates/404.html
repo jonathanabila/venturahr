@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block navbar %}
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link active" href="{% url 'core:home' %}">Home</a>
+        </li>
+    </ul>
+{% endblock navbar %}
+
+
+{% block content %}
+    <div class="container d-flex justify-content-center mt-5" style="width: 50%;">
+        <h1 class="mb-5">Sorry, but you don't have permissions to access the system.</h1>
+    </div>
+{% endblock %}
