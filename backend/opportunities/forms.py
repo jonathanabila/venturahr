@@ -4,16 +4,17 @@ from typing import Union
 from django import forms
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from django.forms import BaseModelFormSet, ModelForm
+from django.forms import BaseModelFormSet
 from django.utils import timezone
 
 from companies.models import CompanyRecruiterUser, CompanyUser
 from core.constants import MAXIMUM_OPPORTUNITY_INTERVAL, MINIMUM_OPPORTUNITY_INTERVAL
+from core.forms import BaseFormWithWidgets
 from core.models import User
 from opportunities.models import Opportunity, OpportunityRequirement
 
 
-class OpportunityNewForm(ModelForm):
+class OpportunityNewForm(BaseFormWithWidgets):
     instance: Opportunity
 
     def __init__(self, *args, current_user, **kwargs) -> None:
@@ -57,17 +58,15 @@ class OpportunityNewForm(ModelForm):
         return expires_at
 
 
-class OpportunityRequirementNewForm(ModelForm):
+class OpportunityRequirementNewForm(BaseFormWithWidgets):
     instance: OpportunityRequirement
 
     class Meta:
         model = OpportunityRequirement
         fields = ["name", "description", "weight"]
 
-    name = forms.CharField(
-        widget=forms.TextInput(attrs={"class": "form-control", "required": "required"}),
-        required=True,
-    )
+    name = forms.CharField()
+    weight = forms.IntegerField(min_value=1)
 
     def save(
         self, opportunity: Opportunity, created_by: User, commit=True

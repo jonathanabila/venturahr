@@ -4,9 +4,10 @@ from django.contrib.auth.models import Permission
 from django.db import transaction
 
 from candidates.models import CandidateUser
+from core.forms import BaseFormWithWidgets
 
 
-class CandidatesRegistrationForm(UserCreationForm):
+class CandidatesRegistrationForm(BaseFormWithWidgets, UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(max_length=50, required=True)
@@ -41,7 +42,7 @@ class CandidatesRegistrationForm(UserCreationForm):
         return user
 
 
-class CandidateUserUpdateForm(forms.ModelForm):
+class CandidateUserUpdateForm(BaseFormWithWidgets):
     class Meta:
         model = CandidateUser
         fields = ("username", "first_name", "last_name", "email")

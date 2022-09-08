@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 from companies.models import Company, CompanyRecruiterUser, CompanyUser
 from core.constants import RECRUITER_PERMISSIONS
+from core.forms import BaseFormWithWidgets
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +20,7 @@ class CompaniesAuthenticationForm(AuthenticationForm):
     )
 
 
-class CompaniesRegistrationForm(UserCreationForm):
+class CompaniesRegistrationForm(BaseFormWithWidgets, UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(max_length=50, required=True)
@@ -76,7 +77,7 @@ class CompaniesRegistrationForm(UserCreationForm):
         return user
 
 
-class CompaniesRecruiterRegistrationForm(UserCreationForm):
+class CompaniesRecruiterRegistrationForm(BaseFormWithWidgets, UserCreationForm):
     def __init__(self, *args, current_user, **kwargs):
         self.current_user = current_user
         super().__init__(*args, **kwargs)
@@ -122,7 +123,7 @@ class CompaniesRecruiterRegistrationForm(UserCreationForm):
         return user
 
 
-class CompanyUserUpdateForm(forms.ModelForm):
+class CompanyUserUpdateForm(BaseFormWithWidgets):
     class Meta:
         model = CompanyUser
         fields = ("username", "first_name", "last_name", "email")
