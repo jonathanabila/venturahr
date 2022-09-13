@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils import timezone
 
@@ -31,7 +32,9 @@ class OpportunityRequirement(models.Model):
 
     created_at = models.DateTimeField(default=timezone.now)
 
-    weight = models.IntegerField(null=False)
+    weight = models.IntegerField(
+        null=False, validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
 
     opportunity = models.ForeignKey(
         "opportunities.Opportunity",

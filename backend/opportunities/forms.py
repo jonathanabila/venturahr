@@ -66,7 +66,7 @@ class OpportunityRequirementNewForm(BaseFormWithWidgets):
         fields = ["name", "description", "weight"]
 
     name = forms.CharField()
-    weight = forms.IntegerField(min_value=1)
+    weight = forms.IntegerField(min_value=1, max_value=5)
 
     def save(
         self, opportunity: Opportunity, created_by: User, commit=True
