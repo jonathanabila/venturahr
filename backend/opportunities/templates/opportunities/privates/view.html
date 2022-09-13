@@ -14,12 +14,9 @@
             <h4 class="mt-5">Requirements</h4>
             <hr>
             {% for requirement in opportunity.requirements.all %}
-                <p>Name: {{ requirement.name }}</p>
-
-                {% if user.is_recruiter is True %}
-                    <p>Weight: {{ requirement.weight }}</p>
-                {% endif %}
-                <p>Description: {{ requirement.description }}</p>
+                <p>
+                    {% if user.is_recruiter is True %}[{{ requirement.weight }}]{% endif %}
+                    {{ requirement.name }} - {{ requirement.description }}</p>
                 <hr>
             {% endfor %}
         </div>
