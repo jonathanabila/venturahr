@@ -1,5 +1,7 @@
 from django.urls import path
 
+import opportunities.views.opportunities
+
 from . import views
 
 app_name = "opportunities"
@@ -12,12 +14,12 @@ urlpatterns = [
     ),
     path(
         "private/opportunities/<int:pk>",
-        views.OpportunitiesRecruiterOpportunityView.as_view(),
+        opportunities.views.opportunities.OpportunitiesOpportunityView.as_view(),
         name="private-opportunity",
     ),
     path(
         "private/opportunities/",
-        views.OpportunitiesRecruiterOpportunities.as_view(),
+        opportunities.views.opportunities.OpportunitiesRecruiterOpportunities.as_view(),
         name="private-opportunities",
     ),
 ]

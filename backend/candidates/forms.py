@@ -4,6 +4,7 @@ from django.contrib.auth.models import Permission
 from django.db import transaction
 
 from candidates.models import CandidateUser
+from core.constants import CANDIDATE_PERMISSIONS
 from core.forms import BaseFormWithWidgets
 
 
@@ -32,7 +33,12 @@ class CandidatesRegistrationForm(BaseFormWithWidgets, UserCreationForm):
 
             # Adds the permissions
             candidate_permissions = Permission.objects.filter(
-                codename__in=("view_candidateuser", "change_candidateuser")
+                codename__in=(
+                    "view_candidateuser",
+                    "change_candidateuser",
+                    # Opportunity
+                    *CANDIDATE_PERMISSIONS,
+                )
             )
             user.user_permissions.add(*candidate_permissions)
 

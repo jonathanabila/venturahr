@@ -1,1 +1,2 @@
-from .views import *
+from .companies import *
+from .opportunities import *

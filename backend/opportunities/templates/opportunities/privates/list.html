@@ -5,16 +5,12 @@
         {% for opportunity in opportunity_list %}
 
             <div class="mt-5">
-                <a class="nav-item active"
-                    href="{% url 'opportunities:private-opportunity' opportunity.id %}">
+                <a class="nav-item active" href="{% url 'opportunities:private-opportunity' opportunity.id %}">
                     <h2>{{ opportunity.name.title }}</h2></a>
                 <h4>{{ opportunity.company.name }}</h4>
                 <br/>
                 <p><strong>Description:</strong> {{ opportunity.description }}</p>
                 <p><strong>Expires At: </strong> {{ opportunity.expires_at }} </p>
-
-                {% block oppportunities_actions %}{% endblock oppportunities_actions %}
-
             </div>
         {% endfor %}
 

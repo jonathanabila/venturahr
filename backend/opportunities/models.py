@@ -4,6 +4,9 @@ from django.utils import timezone
 
 
 class Opportunity(models.Model):
+    class Meta:
+        permissions = [("signup_opportunity", "Can sign up for an opportunity")]
+
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=3000)
 

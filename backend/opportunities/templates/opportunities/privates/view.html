@@ -10,15 +10,17 @@
                 <p><strong>Description:</strong> {{ opportunity.description }}</p>
                 <p><strong>Expires At: </strong> {{ opportunity.expires_at }} </p>
             </div>
-
-            <h4 class="mt-5">Requirements</h4>
-            <hr>
-            {% for requirement in opportunity.requirements.all %}
-                <p>
-                    {% if user.is_recruiter is True %}[{{ requirement.weight }}]{% endif %}
-                    {{ requirement.name }} - {{ requirement.description }}</p>
+            <div>
+                <h4 class="mt-5">Requirements</h4>
                 <hr>
-            {% endfor %}
+                {% for requirement in opportunity.requirements.all %}
+                    <p>
+                        {% if user.is_recruiter is True %}[{{ requirement.weight }}]{% endif %}
+                        {{ requirement.name }} - {{ requirement.description }}</p>
+                    <hr>
+                {% endfor %}
+            </div>
+            {% block oppportunities_actions %}{% endblock oppportunities_actions %}
         </div>
     </div>
 {% endblock %}
