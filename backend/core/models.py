@@ -29,5 +29,12 @@ class User(AbstractUser):
         return self.has_perms(NAMESPACE_CANDIDATE_PERMISSIONS)
 
     @property
+    def is_admin(self) -> bool:
+        return self.has_perms(
+            "companies.change_companyuser",
+            "companies.change_companyrecruiteruser",
+        )
+
+    @property
     def get_full_name(self) -> str:
         return super().get_full_name().title()
