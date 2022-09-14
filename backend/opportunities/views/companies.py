@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.forms import modelformset_factory
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.views import generic
 
 from core.constants import NAMESPACE_RECRUITER_PERMISSIONS
+from core.views import GenericCreateViewWithUser
 from opportunities.forms import (
     OpportunityNewForm,
     OpportunityRequirementEmptyFormset,
@@ -15,7 +15,7 @@ from opportunities.models import Opportunity, OpportunityRequirement
 from opportunities.services import OpportunityService
 
 
-class OpportunitiesNewOpportunityView(PermissionRequiredMixin, generic.CreateView):
+class OpportunitiesNewOpportunityView(PermissionRequiredMixin, GenericCreateViewWithUser):
     form_class = OpportunityNewForm
     queryset = Opportunity.objects
 
@@ -24,12 +24,6 @@ class OpportunitiesNewOpportunityView(PermissionRequiredMixin, generic.CreateVie
     permission_required = NAMESPACE_RECRUITER_PERMISSIONS
 
     opportunity_service = OpportunityService()
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        if hasattr(self, "object"):
-            kwargs.update({"current_user": self.request.user})
-        return kwargs
 
     def _build_context(self, data=None) -> dict:
         formset = modelformset_factory(
@@ -43,10 +37,10 @@ class OpportunitiesNewOpportunityView(PermissionRequiredMixin, generic.CreateVie
             "formset": formset,
         }
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs) -> HttpResponse:
         return render(request, self.template_name, self._build_context())
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs) -> HttpResponseRedirect:
         context = self._build_context(request.POST)
         if not self.opportunity_service.is_valid(**context):
             return render(request, self.template_name, context)

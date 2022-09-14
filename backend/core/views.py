@@ -50,3 +50,11 @@ class OrPermissionsRequiredMixin(PermissionRequiredMixin):
             return super().has_permission()
 
         return any(self.request.user.has_perms(p) for p in self.permissions_required)
+
+
+class GenericCreateViewWithUser(generic.CreateView):
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if hasattr(self, "object"):
+            kwargs.update({"current_user": self.request.user})
+        return kwargs

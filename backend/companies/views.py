@@ -10,7 +10,7 @@ from companies.forms import (
     CompanyUserUpdateForm,
 )
 from companies.models import CompanyUser
-from core.views import VenturaHRView
+from core.views import GenericCreateViewWithUser, VenturaHRView
 
 
 class CompaniesHomePageView(VenturaHRView, generic.base.TemplateView):
@@ -39,17 +39,11 @@ class CompaniesPrivateHomePageView(
     permission_required = "companies.view_companyuser"
 
 
-class CompaniesNewRecruiterView(generic.CreateView):
+class CompaniesNewRecruiterView(GenericCreateViewWithUser):
     form_class = CompaniesRecruiterRegistrationForm
 
     template_name = "companies/privates/new_recruiter.html"
     success_url = reverse_lazy("companies:private-home")
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        if hasattr(self, "object"):
-            kwargs.update({"current_user": self.request.user})
-        return kwargs
 
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, current_user=request.user, **kwargs)

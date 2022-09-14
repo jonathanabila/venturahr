@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import ModelForm
+from django.db.models import Model
+from django.forms import BaseModelFormSet, ModelForm
 
 from .models import User
 
@@ -32,3 +33,11 @@ class RegistrationForm(UserCreationForm):
             "password1",
             "password2",
         )
+
+
+class EmptyFormset(BaseModelFormSet):
+    object_to_overide_queryset: Model = None
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **{**kwargs, "queryset": None})
+        self.queryset = self.object_to_overide_queryset
