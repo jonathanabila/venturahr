@@ -1,0 +1,35 @@
+{% extends "opportunities/privates/base.html" %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center mt-5" style="width: 25%;">
+        <div class="col">
+            <form action="" method="post" class="form-horizontal">
+                {% csrf_token %}
+
+                <div>
+                    <h3>Experience</h3>
+                    <div id="formset-container">
+                        {{ formset.management_form }}
+                        {% for form in formset %}
+                            <div class="formset-form mb-5">
+                                <table class="table">
+                                    {{ form.as_table }}
+                                </table>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="container d-flex justify-content-center" style="width: 10%;">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Submit"
+                        style="margin-right: 30px; margin-top: 30px;">
+                    <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;"
+                        onclick="window.location='{% url 'candidates:private-home' %}'; return false;"
+                        value="Cancel">
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+{% endblock %}

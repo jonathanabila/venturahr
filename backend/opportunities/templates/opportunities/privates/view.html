@@ -10,6 +10,16 @@
                 <p><strong>Description:</strong> {{ opportunity.description }}</p>
                 <p><strong>Expires At: </strong> {{ opportunity.expires_at }} </p>
             </div>
+
+            <div>
+                {% if user.is_candidate %}
+                    <a class="btn btn-primary btn-lg btn-block" role="button"
+                        href="{% url 'opportunities:private-apply-opportunity' opportunity.id %}">
+                        Apply
+                    </a>
+                {% endif %}
+            </div>
+
             <div>
                 <h4 class="mt-5">Requirements</h4>
                 <hr>
@@ -20,7 +30,6 @@
                     <hr>
                 {% endfor %}
             </div>
-            {% block oppportunities_actions %}{% endblock oppportunities_actions %}
         </div>
     </div>
 {% endblock %}

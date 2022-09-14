@@ -4,14 +4,19 @@ from typing import Union
 from django import forms
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from django.forms import BaseModelFormSet
+from django.db.models import Model
 from django.utils import timezone
 
 from companies.models import CompanyRecruiterUser, CompanyUser
 from core.constants import MAXIMUM_OPPORTUNITY_INTERVAL, MINIMUM_OPPORTUNITY_INTERVAL
-from core.forms import BaseFormWithWidgets
+from core.forms import BaseFormWithWidgets, EmptyFormset
 from core.models import User
-from opportunities.models import Opportunity, OpportunityRequirement
+from opportunities.models import (
+    Opportunity,
+    OpportunityAnswer,
+    OpportunityAnswerRequirement,
+    OpportunityRequirement,
+)
 
 
 class OpportunityNewForm(BaseFormWithWidgets):
@@ -81,7 +86,34 @@ class OpportunityRequirementNewForm(BaseFormWithWidgets):
         return requirement
 
 
-class OpportunityRequirementEmptyFormset(BaseModelFormSet):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **{**kwargs, "queryset": None})
-        self.queryset = OpportunityRequirement.objects.none()
+class OpportunityRequirementEmptyFormset(EmptyFormset):
+    object_to_overide_queryset: Model = OpportunityRequirement.objects.none()
+
+
+class OpportunityAnswersRequirementApplyForm(BaseFormWithWidgets):
+    instance: OpportunityAnswerRequirement
+
+    class Meta:
+        model = OpportunityAnswerRequirement
+        fields = ["name", "description", "answer"]
+
+    name = forms.CharField(widget=forms.TextInput(attrs={"readonly": "readonly"}))
+    description = forms.CharField(widget=forms.TextInput(attrs={"readonly": "readonly"}))
+
+    answer = forms.IntegerField(min_value=1, max_value=5)
+
+    field_order = ["name", "description", "answer"]
+
+    def save(
+        self, opportunity: Opportunity, created_by: User, commit=True
+    ) -> OpportunityAnswerRequirement:
+        with transaction.atomic():
+            opportunity_answer = OpportunityAnswer.objects.create(
+                opportunity=opportunity,
+                created_by=created_by,
+            )
+
+            self.instance.created_by = created_by
+            self.instance.opportunity_answer = opportunity_answer
+
+        return self.instance
