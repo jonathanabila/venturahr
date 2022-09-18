@@ -98,8 +98,8 @@ class OpportunityAnswersRequirementApplyForm(BaseFormWithWidgets):
         model = OpportunityAnswerRequirement
         fields = ["name", "description", "answer"]
 
-    name = forms.CharField(widget=forms.TextInput(attrs={"readonly": "readonly"}))
-    description = forms.CharField(widget=forms.TextInput(attrs={"readonly": "readonly"}))
+    name = forms.CharField(label="", widget=forms.TextInput(attrs={"readonly": "readonly"}))
+    description = forms.CharField(label="", widget=forms.Textarea(attrs={"readonly": "readonly"}))
 
     answer = forms.IntegerField(min_value=1, max_value=5)
 
