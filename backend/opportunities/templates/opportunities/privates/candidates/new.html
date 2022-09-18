@@ -10,6 +10,9 @@
                     <h3>Experience</h3>
                     <div id="formset-container">
                         {{ formset.management_form }}
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
                         {% for form in formset %}
                             <div class="formset-form mb-5">
                                 <table class="table">

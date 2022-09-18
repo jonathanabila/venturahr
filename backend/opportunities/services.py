@@ -2,7 +2,7 @@ from django.db import transaction
 from django.forms import BaseModelFormSet
 
 from opportunities.forms import OpportunityNewForm
-from opportunities.models import Opportunity
+from opportunities.models import Opportunity, OpportunityAnswer
 
 
 class OpportunityService:
@@ -21,3 +21,19 @@ class OpportunityService:
                 requirement.save(opportunity, opportunity.created_by)
 
         return opportunity
+
+
+class OpportunityAnswerService:
+    @staticmethod
+    def create_answers_requirement(
+        opportunity_pk: int, user, formset: BaseModelFormSet, *args, **kwargs
+    ) -> OpportunityAnswer:
+        with transaction.atomic():
+            opportunity = Opportunity.objects.get(id=opportunity_pk)
+
+            for answer_requirement in formset:
+                opportunity_answer, _ = answer_requirement.save(
+                    opportunity, answer_requirement.initial["opportunity_requirement_id"], user
+                )
+
+        return opportunity_answer

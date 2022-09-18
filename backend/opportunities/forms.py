@@ -1,5 +1,5 @@
 import datetime
-from typing import Union
+from typing import Tuple, Union
 
 from django import forms
 from django.core.exceptions import ValidationError
@@ -91,23 +91,29 @@ class OpportunityRequirementEmptyFormset(EmptyFormset):
     object_to_overide_queryset: Model = OpportunityRequirement.objects.none()
 
 
-class OpportunityAnswersRequirementApplyForm(BaseFormWithWidgets):
+class OpportunityAnswerRequirementApplyForm(BaseFormWithWidgets):
     instance: OpportunityAnswerRequirement
 
     class Meta:
         model = OpportunityAnswerRequirement
         fields = ["name", "description", "answer"]
+        map = {"name": "name", "description": "description", "opportunity_requirement_id": "id"}
 
     name = forms.CharField(label="", widget=forms.TextInput(attrs={"readonly": "readonly"}))
     description = forms.CharField(label="", widget=forms.Textarea(attrs={"readonly": "readonly"}))
 
     answer = forms.IntegerField(min_value=1, max_value=5)
+    opportunity_requirement_id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
 
     field_order = ["name", "description", "answer"]
 
     def save(
-        self, opportunity: Opportunity, created_by: User, commit=True
-    ) -> OpportunityAnswerRequirement:
+        self,
+        opportunity: Opportunity,
+        opportunity_requirement_id: int,
+        created_by: User,
+        commit=True,
+    ) -> Tuple[OpportunityAnswer, OpportunityAnswerRequirement]:
         with transaction.atomic():
             opportunity_answer = OpportunityAnswer.objects.create(
                 opportunity=opportunity,
@@ -116,5 +122,8 @@ class OpportunityAnswersRequirementApplyForm(BaseFormWithWidgets):
 
             self.instance.created_by = created_by
             self.instance.opportunity_answer = opportunity_answer
+            self.instance.opportunity_requirement_id = opportunity_requirement_id
 
-        return self.instance
+            answer_requirement = super().save(commit=commit)
+
+        return opportunity_answer, answer_requirement
