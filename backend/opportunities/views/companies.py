@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from core.constants import NAMESPACE_RECRUITER_PERMISSIONS
-from core.views import GenericCreateViewWithUser
+from core.views import GenericCreateViewWithUser, VenturaHRView
 from opportunities.forms import (
     OpportunityNewForm,
     OpportunityRequirementEmptyFormset,
@@ -15,7 +15,9 @@ from opportunities.models import Opportunity, OpportunityRequirement
 from opportunities.services import OpportunityService
 
 
-class OpportunitiesNewOpportunityView(PermissionRequiredMixin, GenericCreateViewWithUser):
+class OpportunitiesNewOpportunityView(
+    VenturaHRView, PermissionRequiredMixin, GenericCreateViewWithUser
+):
     form_class = OpportunityNewForm
     queryset = Opportunity.objects
 

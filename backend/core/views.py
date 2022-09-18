@@ -8,12 +8,12 @@ from django.core.exceptions import ImproperlyConfigured
 from django.http.response import HttpResponseRedirectBase
 from django.shortcuts import redirect
 from django.views import generic
-from django.views.generic import TemplateView
+from django.views.generic.base import ContextMixin, View
 
 logger = logging.getLogger(__name__)
 
 
-class VenturaHRView(ABC, TemplateView):
+class VenturaHRView(ABC, ContextMixin, View):
     def dispatch(self, request, *args, **kwargs) -> HttpResponseRedirectBase:
         # If private is the path, and we redirect, we'll have a nice loop
         if (
