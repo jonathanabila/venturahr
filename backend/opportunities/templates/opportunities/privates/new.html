@@ -77,7 +77,6 @@
             e.preventDefault()
 
             let containerItems = container.getElementsByTagName("div")
-            let form = containerItems.item(e.target)
 
             if (containerItems.length <= 1) {
                 alert("You need to have at least one requirement!")
@@ -85,7 +84,7 @@
             }
 
             formNum--
-            form.remove()
+            containerItems[containerItems.length - 1].remove()
 
             totalForms.setAttribute('value', `${formNum + 1}`)
         }
