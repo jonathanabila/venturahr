@@ -27,4 +27,9 @@ urlpatterns = [
         opportunities.views.OpportunitiesCandidateApplyView.as_view(),
         name="private-apply-opportunity",
     ),
+    path(
+        "private/opportunities/<int:pk>/candidates",
+        opportunities.views.OpportunityCandidatesView.as_view(),
+        name="private-candidates",
+    ),
 ]

@@ -15,7 +15,7 @@ class OpportunitiesCandidateApplyView(PermissionRequiredMixin, generic.CreateVie
     form_class = OpportunityAnswerRequirementApplyForm
     queryset = OpportunityAnswerRequirement.objects
 
-    template_name = "opportunities/privates/candidates/new.html"
+    template_name = "opportunities/privates/applications/new.html"
 
     permission_required = NAMESPACE_CANDIDATE_PERMISSIONS
 

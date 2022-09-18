@@ -18,6 +18,14 @@
                         Apply
                     </a>
                 {% endif %}
+
+                {% if user.is_recruiter %}
+                    <a class="btn btn-primary btn-lg btn-block" role="button"
+                        href="{% url 'opportunities:private-candidates' opportunity.id %}">
+                        Candidates
+                    </a>
+                {% endif %}
+
             </div>
 
             <div>
