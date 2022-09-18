@@ -25,7 +25,8 @@
                 <hr>
                 {% for requirement in opportunity.requirements.all %}
                     <p>
-                        {% if user.is_recruiter is True %}[{{ requirement.weight }}]{% endif %}
+                        {% if user.is_recruiter is True or user.is_admin is True%}[{{ requirement.weight }}]{% endif %}
+                        {% if user.is_recruiter is True or user.is_admin is True%}({{ requirement.minimim_knowledge }}){% endif %}
                         {{ requirement.name }} - {{ requirement.description }}</p>
                     <hr>
                 {% endfor %}
