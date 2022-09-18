@@ -30,10 +30,7 @@ class User(AbstractUser):
 
     @property
     def is_admin(self) -> bool:
-        return self.has_perms(
-            "companies.change_companyuser",
-            "companies.change_companyrecruiteruser",
-        )
+        return self.has_perms(("companies.add_companyrecruiteruser",))
 
     @property
     def get_full_name(self) -> str:

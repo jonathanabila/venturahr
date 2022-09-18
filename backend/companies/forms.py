@@ -69,6 +69,8 @@ class CompaniesRegistrationForm(BaseFormWithWidgets, UserCreationForm):
                     "change_companyrecruiteruser",
                     "add_companyrecruiteruser",
                     "delete_companyrecruiteruser",
+                    # Opportunities
+                    "view_opportunity",
                 )
             )
             user.user_permissions.add(*view_permissions)
