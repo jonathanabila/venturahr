@@ -68,10 +68,11 @@ class OpportunityRequirementNewForm(BaseFormWithWidgets):
 
     class Meta:
         model = OpportunityRequirement
-        fields = ["name", "description", "weight"]
+        fields = ["name", "description", "weight", "minimim_knowledge"]
 
     name = forms.CharField()
     weight = forms.IntegerField(min_value=1, max_value=5)
+    minimim_knowledge = forms.IntegerField(label="PMD", min_value=1, max_value=5)
 
     def save(
         self, opportunity: Opportunity, created_by: User, commit=True

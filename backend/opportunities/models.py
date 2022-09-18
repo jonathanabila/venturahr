@@ -38,6 +38,11 @@ class OpportunityRequirement(models.Model):
     weight = models.IntegerField(
         null=False, validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
+    minimim_knowledge = models.IntegerField(
+        null=False,
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        default=1,
+    )
 
     opportunity = models.ForeignKey(
         "opportunities.Opportunity",
