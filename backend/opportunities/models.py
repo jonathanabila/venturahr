@@ -86,6 +86,14 @@ class OpportunityAnswer(models.Model):
         verbose_name="created by",
     )
 
+    @property
+    def desired_minimum_profile(self) -> float:
+        return round(
+            sum([r.opportunity_requirement.weight * r.answer for r in self.requirements.all()])
+            / sum([r.opportunity_requirement.weight for r in self.requirements.all()]),
+            2,
+        )
+
 
 class OpportunityAnswerRequirement(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
