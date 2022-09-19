@@ -5,6 +5,7 @@ from core.constants import (
     NAMESPACE_CANDIDATE_PERMISSIONS,
     NAMESPACE_RECRUITER_PERMISSIONS,
 )
+from core.models import User
 from core.views import OrPermissionsRequiredMixin
 from opportunities.constants import OPPORTUNITIES_PAGINATE_BY
 from opportunities.models import Opportunity
@@ -19,6 +20,10 @@ class OpportunitiesOpportunityView(OrPermissionsRequiredMixin, generic.DetailVie
         NAMESPACE_CANDIDATE_PERMISSIONS,
         NAMESPACE_ADMIN_PERMISSIONS,
     )
+
+    def get_context_data(self, **kwargs) -> dict:
+        user: User = self.request.user
+        return {**super().get_context_data(**kwargs), "can_apply": user.can_apply(self.object.id)}
 
 
 class OpportunitiesRecruiterOpportunities(OrPermissionsRequiredMixin, generic.ListView):

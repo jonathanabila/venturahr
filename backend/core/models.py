@@ -35,3 +35,8 @@ class User(AbstractUser):
     @property
     def get_full_name(self) -> str:
         return super().get_full_name().title()
+
+    def can_apply(self, opportunity_id: int) -> bool:
+        return not self.opportunityanswer_set.filter(
+            opportunity_id=opportunity_id, created_by_id=self.id
+        ).exists()
