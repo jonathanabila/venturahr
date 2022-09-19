@@ -115,7 +115,7 @@ class OpportunityAnswerRequirementApplyForm(BaseFormWithWidgets):
         commit=True,
     ) -> Tuple[OpportunityAnswer, OpportunityAnswerRequirement]:
         with transaction.atomic():
-            opportunity_answer = OpportunityAnswer.objects.create(
+            opportunity_answer, _ = OpportunityAnswer.objects.get_or_create(
                 opportunity=opportunity,
                 created_by=created_by,
             )
