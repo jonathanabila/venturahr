@@ -82,6 +82,12 @@ class CompaniesRegistrationForm(BaseFormWithWidgets, UserCreationForm):
 
 
 class CompaniesRecruiterRegistrationForm(BaseFormWithWidgets, UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(max_length=50, required=True)
+
+    company = forms.CharField(max_length=30, required=True)
+
     def __init__(self, *args, current_user, **kwargs):
         self.current_user = current_user
         super().__init__(*args, **kwargs)
