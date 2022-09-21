@@ -5,7 +5,9 @@
         {% for opportunity_answer in opportunityanswer_list %}
 
             <div class="mt-5">
-                <h4>{{ opportunity_answer.created_by.get_full_name }}</h4>
+                <a href="{% url 'opportunities:private-opportunity-answer-candidate' opportunity_answer.id opportunity_answer.created_by_id %}">
+                    <h4>{{ opportunity_answer.created_by.get_full_name }}</h4>
+                </a>
                 <hr/>
                 <p><strong>PMD:</strong> {{ opportunity_answer.desired_minimum_profile }}</p>
             </div>

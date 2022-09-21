@@ -32,4 +32,9 @@ urlpatterns = [
         opportunities.views.OpportunityCandidatesView.as_view(),
         name="private-candidates",
     ),
+    path(
+        "private/opportunities/answers/<int:pk>/candidates/<int:candidate_pk>",
+        opportunities.views.OpportunityCandidateView.as_view(),
+        name="private-opportunity-answer-candidate",
+    ),
 ]

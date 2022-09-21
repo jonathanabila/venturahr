@@ -7,13 +7,20 @@ from django.views import generic
 
 from core.constants import NAMESPACE_RECRUITER_PERMISSIONS
 from core.views import GenericCreateViewWithUser, VenturaHRView
+from fixtures.utils import rgetattr
 from opportunities.constants import CANDIDATES_PAGINATE_BY
 from opportunities.forms import (
+    OpportunityAnswerRequirementApplyForm,
     OpportunityNewForm,
     OpportunityRequirementEmptyFormset,
     OpportunityRequirementNewForm,
 )
-from opportunities.models import Opportunity, OpportunityAnswer, OpportunityRequirement
+from opportunities.models import (
+    Opportunity,
+    OpportunityAnswer,
+    OpportunityAnswerRequirement,
+    OpportunityRequirement,
+)
 from opportunities.services import OpportunityService
 
 
@@ -71,3 +78,42 @@ class OpportunityCandidatesView(VenturaHRView, generic.ListView):
     def get(self, request, *args, pk: int, **kwargs):
         self.opportunity_id = pk
         return super().get(request, *args, **kwargs)
+
+
+class OpportunityCandidateView(VenturaHRView, generic.DetailView):
+    model = OpportunityAnswer
+    template_name = "opportunities/privates/candidates/view.html"
+
+    def _build_context(self) -> dict:
+        initial = [
+            {
+                k: rgetattr(r, f)
+                for k, f in {
+                    "name": "opportunity_requirement.name",
+                    "description": "opportunity_requirement.description",
+                    "answer": "answer",
+                }.items()
+            }
+            for r in self.get_queryset().get(id=self.opportunity_answer_id).requirements.all()
+        ]
+
+        formset = modelformset_factory(
+            OpportunityAnswerRequirement,
+            form=OpportunityAnswerRequirementApplyForm,
+            extra=len(initial),
+            can_delete_extra=False,
+            can_delete=False,
+        )(queryset=self.get_queryset().none(), initial=initial)
+
+        return {
+            "formset": formset,
+            "opportunityanswer": self.get_queryset().get(pk=self.opportunity_answer_id),
+        }
+
+    def get_queryset(self):
+        return OpportunityAnswer.objects.filter(created_by_id=self.candidate_id).all()
+
+    def get(self, request, *args, pk: int, candidate_pk: int, **kwargs):
+        self.opportunity_answer_id = pk
+        self.candidate_id = candidate_pk
+        return render(request, self.template_name, self._build_context())

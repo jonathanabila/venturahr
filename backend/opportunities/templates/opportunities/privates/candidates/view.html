@@ -1,0 +1,27 @@
+{% extends "opportunities/privates/base.html" %}
+
+{% block content %}
+    <div class="container d-flex flex-column mt-5">
+        <div class="container flex-column mt-5" style="width: 50%;">
+            <h3>Candidate</h3>
+            <hr/>
+            <h4><strong>Name:</strong> {{ opportunityanswer.created_by.get_full_name }}</h4>
+            <p><strong>PMD:</strong> {{ opportunityanswer.desired_minimum_profile }}</p>
+        </div>
+
+        <div class="container d-flex flex-column mt-5" style="width: 50%;">
+            <div class=" d-flex justify-content-center">
+                <h3>Answers</h3>
+            </div>
+            <div id="formset-container">
+                {% for form in formset %}
+                    <div class="formset-form mb-5">
+                        <table class="table">
+                            {{ form.as_table }}
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
