@@ -70,6 +70,8 @@ jobs:
 
       - name: Unit tests
         run: poetry run pytest -vvv --cov=. --cov-report=xml
+        env:
+          DB_HOST: postgres
 
       - uses: codecov/codecov-action@v2
         with:
