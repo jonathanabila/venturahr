@@ -1,3 +1,4 @@
+import functools
 from decimal import Decimal
 from enum import Enum
 
@@ -16,3 +17,20 @@ def factory_boy_decoder(obj_decoder):
         return obj
 
     return default(obj_decoder)
+
+
+def rgetattr(obj, attr, *args):
+    def _getattr(obj, attr):
+        return getattr(obj, attr, *args)
+
+    return functools.reduce(_getattr, [obj] + attr.split("."))
+
+
+def rsetattr(obj, attr, val):
+    pre, _, post = attr.rpartition(".")
+    return setattr(rgetattr(obj, pre) if pre else obj, post, val)
+
+
+def rdelattr(obj, attr):
+    pre, _, post = attr.rpartition(".")
+    return delattr(rgetattr(obj, pre) if pre else obj, post)
