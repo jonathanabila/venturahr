@@ -9,7 +9,6 @@ python = "^3.10"
 djangorestframework = "^3.13.1"
 psycopg2-binary = "^2.9.3"
 Django = "^4.1"
-pytest-django = "^4.5.2"
 
 [tool.poetry.dev-dependencies]
 tryceratops = "^1.1.0"
@@ -26,6 +25,7 @@ Faker = "^13.11.0"
 pytest-factoryboy = "^2.2.1"
 django-admin = "^2.0.1"
 djhtml = "^1.5.0"
+pytest-django = "^4.5.2"
 
 [tool.black]
 line-length = 100
