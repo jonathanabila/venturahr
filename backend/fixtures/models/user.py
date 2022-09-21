@@ -11,3 +11,8 @@ class UserStub:
 
     password1: str
     password2: str
+
+
+@dataclass
+class UserWithCompanyStub(UserStub):
+    company: str

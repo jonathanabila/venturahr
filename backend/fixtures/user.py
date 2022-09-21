@@ -2,7 +2,7 @@ import factory.django
 
 from core.models import User
 from fixtures.company import CompanyFactory
-from fixtures.models.user import UserStub
+from fixtures.models.user import UserStub, UserWithCompanyStub
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -30,3 +30,10 @@ class UserFormFactory(factory.Factory):
 
     password1 = factory.Faker("safe_password")
     password2 = factory.SelfAttribute(".password1")
+
+
+class UserWithCompanyFormFactory(UserFormFactory):
+    class Meta:
+        model = UserWithCompanyStub
+
+    company = factory.Faker("company_suffix")
