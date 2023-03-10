@@ -57,7 +57,7 @@ class OpportunityNewForm(BaseFormWithWidgets):
             days=MINIMUM_OPPORTUNITY_INTERVAL
         ):
             raise ValidationError(
-                f"An Opportunity has to last at last for {MINIMUM_OPPORTUNITY_INTERVAL} days."
+                f"An Opportunity has to last at least for {MINIMUM_OPPORTUNITY_INTERVAL} days."
             )
 
         return expires_at

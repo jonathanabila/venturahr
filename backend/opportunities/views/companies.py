@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views import generic
 
-from core.constants import NAMESPACE_RECRUITER_PERMISSIONS
+from core.constants import NAMESPACE_CANDIDATE_PERMISSIONS, NAMESPACE_RECRUITER_PERMISSIONS
 from core.views import GenericCreateViewWithUser, VenturaHRView
 from fixtures.utils import rgetattr
 from opportunities.constants import CANDIDATES_PAGINATE_BY
@@ -80,9 +80,11 @@ class OpportunityCandidatesView(VenturaHRView, generic.ListView):
         return super().get(request, *args, **kwargs)
 
 
-class OpportunityCandidateView(VenturaHRView, generic.DetailView):
+class OpportunityCandidateView(VenturaHRView, PermissionRequiredMixin, generic.DetailView):
     model = OpportunityAnswer
     template_name = "opportunities/privates/candidates/view.html"
+
+    permission_required = NAMESPACE_CANDIDATE_PERMISSIONS
 
     def _build_context(self) -> dict:
         initial = [
