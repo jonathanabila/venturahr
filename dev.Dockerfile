@@ -11,7 +11,7 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
     PIP_DEFAULT_TIMEOUT=100 \
     # Poetry env vars (https://python-poetry.org/docs/configuration/#using-environment-variables)
-    POETRY_VERSION=1.1.13 \
+    POETRY_VERSION=1.4.0 \
     POETRY_NO_INTERACTION=1
 
 RUN pip install --no-cache-dir "poetry==$POETRY_VERSION"
@@ -26,6 +26,6 @@ COPY backend/poetry.lock backend/pyproject.toml /app/
 RUN poetry install --no-dev
 COPY . /app/
 
-ENV PYTHONPATH=/app/src:$PYTHONPATH
+WORKDIR /app/backend
 
 EXPOSE 8081

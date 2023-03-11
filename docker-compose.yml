@@ -26,7 +26,7 @@ services:
     env_file:
       - .env.default
     volumes:
-      - ./backend/:/app/
+      - ./backend/:/app/backend/
     ports:
       - "8081:8081"
     networks:
@@ -44,7 +44,7 @@ services:
     env_file:
       - .env.default
     volumes:
-      - ./backend/:/app/
+      - ./backend/:/app/backend/
     networks:
       - venturahr_net
     depends_on:
