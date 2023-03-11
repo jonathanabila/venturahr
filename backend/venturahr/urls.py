@@ -18,6 +18,7 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 
 urlpatterns = [
+    path("health/", include("health_check.urls")),
     path("admin/", admin.site.urls),
     path("", include("core.urls")),
     path("", RedirectView.as_view(url="home/")),

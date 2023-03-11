@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # externals
     "rest_framework",
+    "health_check",
+    "health_check.db",
     # custom
     "opportunities",
     "core",
