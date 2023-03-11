@@ -5,3 +5,4 @@ resources:
   - configmap.yml
   - deployment.yml
   - persistent_volume.yml
+  - hpa.yml
