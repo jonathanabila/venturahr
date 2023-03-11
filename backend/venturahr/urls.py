@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import RedirectView
 
+from venturahr.views import index
+
 urlpatterns = [
+    path("ping/", index),
     path("health/", include("health_check.urls")),
     path("admin/", admin.site.urls),
     path("", include("core.urls")),
