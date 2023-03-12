@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("opportunities", "0002_alter_opportunity_created_at_and_more"),
     ]
