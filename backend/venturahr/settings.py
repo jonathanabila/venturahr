@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "health_check",
     "health_check.db",
+    "drf_yasg",
     # custom
     "opportunities",
     "core",

@@ -10,6 +10,7 @@ djangorestframework = "^3.13.1"
 psycopg2-binary = "^2.9.3"
 Django = "^4.1"
 django-health-check = "^3.17.0"
+drf-yasg = "^1.21.5"
 
 [tool.poetry.dev-dependencies]
 tryceratops = "^1.1.0"

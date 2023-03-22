@@ -14,10 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views.generic import RedirectView
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
 
 from venturahr.views import index
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="VenturaHR API",
+        default_version="v1",
+        description="PB-2023.1",
+        terms_of_service="https://www.google.com/policies/terms/",
+    ),
+    public=True,
+)
 
 urlpatterns = [
     path("ping/", index),
@@ -28,4 +40,5 @@ urlpatterns = [
     path("companies/", include("companies.urls")),
     path("candidates/", include("candidates.urls")),
     path("opportunities/", include("opportunities.urls")),
+    re_path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
 ]
