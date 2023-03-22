@@ -2,7 +2,7 @@
 
 {% block navbar %}
     <ul class="navbar-nav mr-auto">
-        {% if user.candidate is True %}
+        {% if user.is_candidate is True %}
             <li class="nav-item active">
                 <a class="nav-link active" href="{% url 'candidates:private-home' %}">VenturaHR - Candidates</a>
             </li>

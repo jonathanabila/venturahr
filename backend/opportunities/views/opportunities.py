@@ -28,8 +28,6 @@ class OpportunitiesOpportunityView(OrPermissionsRequiredMixin, generic.DetailVie
 
 class OpportunitiesRecruiterOpportunities(OrPermissionsRequiredMixin, generic.ListView):
     model = Opportunity
-    # TODO: When a candidate clicks on Opportunities, it redirected to company opportunities,
-    #  which it isn't the goal.
     template_name = "opportunities/privates/list.html"
 
     queryset = Opportunity.objects.all().order_by("expires_at")
