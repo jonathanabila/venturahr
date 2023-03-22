@@ -127,3 +127,9 @@ class OpportunityAnswerRequirementApplyForm(BaseFormWithWidgets):
             answer_requirement = super().save(commit=commit)
 
         return opportunity_answer, answer_requirement
+
+
+class OpportunityAnswerRequirementViewForm(OpportunityAnswerRequirementApplyForm):
+    answer = forms.IntegerField(
+        min_value=1, max_value=5, widget=forms.TextInput(attrs={"readonly": "readonly"})
+    )
