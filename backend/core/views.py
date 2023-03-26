@@ -8,13 +8,13 @@ from django.core.exceptions import ImproperlyConfigured
 from django.http.response import HttpResponseRedirectBase
 from django.shortcuts import redirect
 from django.views import generic
-from django.views.generic.base import ContextMixin
+from django.views.generic.base import ContextMixin, View
 from rest_framework.views import APIView
 
 logger = logging.getLogger(__name__)
 
 
-class VenturaHRView(ABC, ContextMixin, APIView):
+class VenturaHRView(ABC, ContextMixin, View):
     def dispatch(self, request, *args, **kwargs) -> HttpResponseRedirectBase:
         # If private is the path, and we redirect, we'll have a nice loop
         if (
@@ -27,6 +27,12 @@ class VenturaHRView(ABC, ContextMixin, APIView):
             else:
                 return redirect("candidates:private-home")
         return super().dispatch(request, *args, **kwargs)
+
+
+class VenturaHRAPIView(APIView, VenturaHRView):
+    """Map the view in the swagger documentation."""
+
+    ...
 
 
 class HomePageView(VenturaHRView, generic.base.TemplateView):
