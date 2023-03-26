@@ -41,4 +41,5 @@ urlpatterns = [
     path("candidates/", include("candidates.urls")),
     path("opportunities/", include("opportunities.urls")),
     re_path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    path("", include("django_prometheus.urls")),
 ]

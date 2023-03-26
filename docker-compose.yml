@@ -16,12 +16,13 @@ services:
     networks:
       - venturahr_net
 
-  venturahr_api:
+  # Django doesn't like underscores in the service name when receiving a request.
+  venturahrapi:
     build:
       context: .
       dockerfile: dev.Dockerfile
     image: infnet/venturahr-api:local
-    container_name: venturahr_api
+    container_name: venturahrapi
     command: python manage.py runserver 0.0.0.0:8081
     env_file:
       - .env.default
@@ -50,9 +51,37 @@ services:
     depends_on:
       - venturahr_db
 
+  # Monitoring
+  prometheus:
+    image: prom/prometheus:v2.43.0
+    container_name: prometheus
+    volumes:
+      - ./.prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - venturahr_net
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-lifecycle'
+    depends_on:
+      - venturahrapi
+
+  grafana:
+    image: grafana/grafana:8.2.6
+    ports:
+      - "9091:3000"
+    volumes:
+      - ./.grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - grafana_data:/var/lib/grafana
+    networks:
+      - venturahr_net
 
 volumes:
-  venturahr_db_data:
+  venturahr_db_data: {}
+  prometheus_data: {}
+  grafana_data: {}
 
 networks:
   venturahr_net:

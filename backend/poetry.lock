@@ -404,6 +404,21 @@ docs = ["sphinx"]
 test = ["celery", "pytest", "pytest-cov", "pytest-django", "redis"]
 
 [[package]]
+name = "django-prometheus"
+version = "2.2.0"
+description = "Django middlewares to monitor your application with Prometheus.io."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-prometheus-2.2.0.tar.gz", hash = "sha256:240378a1307c408bd5fc85614a3a57f1ce633d4a222c9e291e2bbf325173b801"},
+    {file = "django_prometheus-2.2.0-py2.py3-none-any.whl", hash = "sha256:e6616770d8820b8834762764bf1b76ec08e1b98e72a6f359d488a2e15fe3537c"},
+]
+
+[package.dependencies]
+prometheus-client = ">=0.7"
+
+[[package]]
 name = "django-six"
 version = "1.0.5"
 description = "Django-six —— Django Compatibility Library"
@@ -953,6 +968,21 @@ identify = ">=1.0.0"
 nodeenv = ">=0.11.1"
 pyyaml = ">=5.1"
 virtualenv = ">=20.10.0"
+
+[[package]]
+name = "prometheus-client"
+version = "0.16.0"
+description = "Python client for the Prometheus monitoring system."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "prometheus_client-0.16.0-py3-none-any.whl", hash = "sha256:0836af6eb2c8f4fed712b2f279f6c0a8bbab29f9f4aa15276b91c7cb0d1616ab"},
+    {file = "prometheus_client-0.16.0.tar.gz", hash = "sha256:a03e35b359f14dd1630898543e2120addfdeacd1a6069c1367ae90fd93ad3f48"},
+]
+
+[package.extras]
+twisted = ["twisted"]
 
 [[package]]
 name = "psycopg2-binary"
@@ -1630,4 +1660,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "50068f04304d9bc669743aee7fc989a312c539914b836ca96b07fa69dff96016"
+content-hash = "85b3470df3a9cd32a1d1e0f662fb0e7e9f73bac11cb3fc8c99cc3d817a806795"
