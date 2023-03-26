@@ -68,11 +68,18 @@ Para executar a aplicação o comando deve ser:
 docker-compose up
 ```
 
-Com isso a aplicação será executada no endereço `http://0.0.0.0:8081/`.
+Com isso a aplicação será executada no endereço `http://localhost:8081/`.
 
 ## Banco de dados
 Não é necessário realizar nenhum comando para a criação das tabelas no banco de dados, já que todo
 o processo é controlado pelo docker, entretanto, se quiser forçar o processo pode executar:
+
+## Grafana + Prometheus
+
+Ambos estão disponiveis para monitorar o funcionamento da aplicação e pode ser accessados em:
+
+- Prometheus: `http://localhost:9090`
+- Grafana: `http://localhost:9091`
 
 ```bash
 docker-compose up venturahr_migrator
