@@ -12,6 +12,7 @@
             <form method="post" action="{% url 'candidates:login' %}">
                 {% csrf_token %}
                 <table>
+                    <caption>Candidate login</caption>
                     {% block login %}{% endblock login %}
                     <tr>
                         <td>{{ form.username.label_tag }}</td>
