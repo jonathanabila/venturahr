@@ -1,6 +1,7 @@
 from django.db import transaction
 from django.forms import BaseModelFormSet
 
+from core.metrics import add_opportunity_counter, add_opportunity_requirements_counter
 from opportunities.forms import OpportunityNewForm
 from opportunities.models import Opportunity, OpportunityAnswer
 
@@ -20,6 +21,8 @@ class OpportunityService:
             for requirement in formset:
                 requirement.save(opportunity, opportunity.created_by)
 
+        add_opportunity_counter().inc()
+        add_opportunity_requirements_counter().inc(len(formset))
         return opportunity
 
 
