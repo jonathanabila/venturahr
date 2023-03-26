@@ -1,5 +1,9 @@
 [![codecov](https://codecov.io/gh/jonathanabila/venturahr/branch/main/graph/badge.svg?token=R88631ZWER)](https://codecov.io/gh/jonathanabila/venturahr)
 ![build](https://github.com/jonathanabila/venturahr/actions/workflows/ci.yml/badge.svg)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jonathanabila_venturahr&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=jonathanabila_venturahr)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=jonathanabila_venturahr&metric=bugs)](https://sonarcloud.io/summary/new_code?id=jonathanabila_venturahr)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=jonathanabila_venturahr&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=jonathanabila_venturahr)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=jonathanabila_venturahr&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=jonathanabila_venturahr)
 
 <p align="center">
     <img src="./docs/logo.jpg" align="center" alt="INFNET logo" title="INFNET" width="200">
